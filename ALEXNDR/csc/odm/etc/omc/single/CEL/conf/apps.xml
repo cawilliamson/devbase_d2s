@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appList>
+  <appInfo>
+    <package>com.cellcom.cellcom360</package>
+    <mandatory>true</mandatory>
+    <downloadType>samsungapps</downloadType>
+    <appName>My Cellcom</appName>
+  </appInfo>
+  <appInfo>
+    <package>com.cellcom.browser</package>
+    <mandatory>true</mandatory>
+    <downloadType>samsungapps</downloadType>
+    <appName>Cellcom Portal</appName>
+  </appInfo>
+  <appInfo>
+    <package>com.cellcom.music</package>
+    <mandatory>true</mandatory>
+    <downloadType>samsungapps</downloadType>
+    <appName>Cellcom Music</appName>
+  </appInfo>
+  <appInfo>
+    <package>com.cellcom.backup</package>
+    <mandatory>true</mandatory>
+    <downloadType>samsungapps</downloadType>
+    <appName>My Cloud</appName>
+  </appInfo>
+</appList>

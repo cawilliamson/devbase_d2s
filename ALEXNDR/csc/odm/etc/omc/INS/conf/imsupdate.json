@@ -1,0 +1,14 @@
+{
+    "update_version": 1,
+    "note": "enable EVS for Vodafone India",
+    "imsprofile_update": {
+        "profile": [
+            {
+                "name": "Vodafone INDIA VoLTE",
+                "mnoname": "Vodafone_IN",
+                "audio_codec": "EVS,AMRBE-WB,AMR-WB,AMRBE,AMR,DTMFWB,DTMF",
+                "enable_evs_codec": true
+            }
+        ]
+    }
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SamsungMobileFeature>
+  <Version>ED00003</Version>
+  <Country>PHILIPPINES</Country>
+  <CountryISO>PH</CountryISO>
+  <SalesCode>XTC</SalesCode>
+  <FeatureSet>
+    <CscFeature_Camera_CameraFlicker>60hz</CscFeature_Camera_CameraFlicker>
+    <CscFeature_Common_ConfigAllowedPackagesDuringDataSaving>com.samsung.android.smartcallprovider</CscFeature_Common_ConfigAllowedPackagesDuringDataSaving>
+    <CscFeature_Common_ConfigSvcProviderForUnknownNumber>whitepages,whitepages,whitepages</CscFeature_Common_ConfigSvcProviderForUnknownNumber>
+    <CscFeature_Common_DisablePhoneNumberFormatting>TRUE</CscFeature_Common_DisablePhoneNumberFormatting>
+    <CscFeature_Common_EulaVersion>2</CscFeature_Common_EulaVersion>
+    <CscFeature_Contact_IgnoreSpaceDuringSearch>TRUE</CscFeature_Contact_IgnoreSpaceDuringSearch>
+    <CscFeature_Contact_SupportDuoVideoCall>TRUE</CscFeature_Contact_SupportDuoVideoCall>
+    <CscFeature_FMRadio_DefaultChannelAs>88.3</CscFeature_FMRadio_DefaultChannelAs>
+    <CscFeature_FMRadio_FrequencySpaceAs>100</CscFeature_FMRadio_FrequencySpaceAs>
+    <CscFeature_Framework_SupportDataModeSwitchGlobalAction>TRUE</CscFeature_Framework_SupportDataModeSwitchGlobalAction>
+    <CscFeature_GMS_SetClientIDBaseMs>android-samsung-gs-rev1</CscFeature_GMS_SetClientIDBaseMs>
+    <CscFeature_GMS_SupportSTSTool>FALSE</CscFeature_GMS_SupportSTSTool>
+    <CscFeature_LockScreen_DisableUnlockVI>TRUE</CscFeature_LockScreen_DisableUnlockVI>
+    <CscFeature_RIL_SupportEsim>FALSE</CscFeature_RIL_SupportEsim>
+    <CscFeature_Setting_ConfigAddSuffixModelNumber>/DS</CscFeature_Setting_ConfigAddSuffixModelNumber>
+    <CscFeature_Setting_ConfigServiceInfoNtcApproval>ntcapproval,serviceinformation</CscFeature_Setting_ConfigServiceInfoNtcApproval>
+    <CscFeature_Sip_LangQwertyType4HwKey>HW_KEYBOARD_COUNTRY_TYPE_PHILIPPINE</CscFeature_Sip_LangQwertyType4HwKey>
+    <CscFeature_SystemUI_ConfigDefQuickSettingItem>Wifi,SoundMode,Bluetooth,RotationLock,AirplaneMode,Flashlight,BatteryMode,PowerShare,MobileData,BikeMode,BlueLightFilter,Hotspot,Location,DailyBoard,AllShareCast,Dnd,SecureFolder,Nfc,Aod,DeviceVisibility,Sync,UDS,PowerPlanning,EdgeLighting,WifiCalling,Dolby,SpenRemote,KidsHome,NightMode,Routines,DesktopMode</CscFeature_SystemUI_ConfigDefQuickSettingItem>
+    <CscFeature_Vision_ConfigBeauty>NLLXX</CscFeature_Vision_ConfigBeauty>
+    <CscFeature_Vision_ConfigFood>NLLXX</CscFeature_Vision_ConfigFood>
+    <CscFeature_Vision_ConfigImageSearch>PTRXX</CscFeature_Vision_ConfigImageSearch>
+    <CscFeature_Vision_ConfigPlace>FSRXX</CscFeature_Vision_ConfigPlace>
+    <CscFeature_Vision_ConfigPlaceLandmark>SFSGO</CscFeature_Vision_ConfigPlaceLandmark>
+    <CscFeature_Vision_ConfigPlaceMap>GGLXX</CscFeature_Vision_ConfigPlaceMap>
+    <CscFeature_Vision_ConfigPlaceWeather>TWCXX</CscFeature_Vision_ConfigPlaceWeather>
+    <CscFeature_Vision_ConfigShopping>NLLXX</CscFeature_Vision_ConfigShopping>
+    <CscFeature_Vision_ConfigTextExchangerate>OANXX</CscFeature_Vision_ConfigTextExchangerate>
+    <CscFeature_Vision_ConfigTextTranslator>GGLXX</CscFeature_Vision_ConfigTextTranslator>
+    <CscFeature_Vision_ConfigWine>VVNXX</CscFeature_Vision_ConfigWine>
+    <CscFeature_Weather_ConfigCpType>TWC</CscFeature_Weather_ConfigCpType>
+    <CscFeature_Web_ConfigSyncSource>TRUE</CscFeature_Web_ConfigSyncSource>
+    <CscFeature_Wifi_ConfigSnsStatus>DEFAULT_ON</CscFeature_Wifi_ConfigSnsStatus>
+  </FeatureSet>
+</SamsungMobileFeature>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<appList>
+  <appInfo>
+    <package>il.co.pelephone.look4me</package>
+    <mandatory>true</mandatory>
+    <downloadType>samsungapps</downloadType>
+    <appName>Look4Me</appName>
+  </appInfo>
+  <appInfo>
+    <package>il.co.pelephone.musix.UI</package>
+    <mandatory>true</mandatory>
+    <downloadType>samsungapps</downloadType>
+    <appName>Musix</appName>
+  </appInfo>
+  <appInfo>
+    <package>com.pelephone.launcher</package>
+    <mandatory>true</mandatory>
+    <downloadType>samsungapps</downloadType>
+    <appName>Pelephone launcher</appName>
+  </appInfo>
+  <appInfo>
+    <package>pelephone.com.pelephonecyber</package>
+    <mandatory>true</mandatory>
+    <downloadType>samsungapps</downloadType>
+    <appName>Pelephone Cyber</appName>
+  </appInfo>
+  <appInfo>
+    <package>com.ewavemobile.songwaiting</package>
+    <mandatory>true</mandatory>
+    <downloadType>samsungapps</downloadType>
+    <appName>Fundail</appName>
+  </appInfo>
+  <appInfo>
+    <package>com.pelephone_mobile</package>
+    <mandatory>true</mandatory>
+    <downloadType>samsungapps</downloadType>
+    <appName>MY Pelephone</appName>
+  </appInfo>
+  <appInfo>
+    <package>com.pelephone.cloud</package>
+    <mandatory>true</mandatory>
+    <downloadType>samsungapps</downloadType>
+    <appName>Pcloud</appName>
+  </appInfo>
+  <appInfo>
+    <package>com.beeweeb.pelephone.supertv</package>
+    <mandatory>true</mandatory>
+    <downloadType>samsungapps</downloadType>
+    <appName>SuperTV</appName>
+  </appInfo>
+</appList>

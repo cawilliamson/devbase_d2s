@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SamsungMobileFeature>
+  <Version>ED00004</Version>
+  <Country>BANGLADESH</Country>
+  <CountryISO>BD</CountryISO>
+  <SalesCode>BNG</SalesCode>
+  <FeatureSet>
+    <CscFeature_Common_AutoConfigurationType>NO_DFLT_CSC, SIMBASED_OMC</CscFeature_Common_AutoConfigurationType>
+    <CscFeature_Common_DisablePhoneNumberFormatting>TRUE</CscFeature_Common_DisablePhoneNumberFormatting>
+    <CscFeature_Common_SupportSmartGlow>FALSE</CscFeature_Common_SupportSmartGlow>
+    <CscFeature_Contact_SupportDuoVideoCall>TRUE</CscFeature_Contact_SupportDuoVideoCall>
+    <CscFeature_FMRadio_RecordingVolumeAs>11</CscFeature_FMRadio_RecordingVolumeAs>
+    <CscFeature_GMS_SetClientIDBaseMs>android-samsung-gs-rev1</CscFeature_GMS_SetClientIDBaseMs>
+    <CscFeature_GMS_SupportSTSTool>FALSE</CscFeature_GMS_SupportSTSTool>
+    <CscFeature_Setting_EnableEditingIpVersionTypeRoaming>TRUE</CscFeature_Setting_EnableEditingIpVersionTypeRoaming>
+    <CscFeature_Setting_IncludeApn4SwUpdate>TRUE</CscFeature_Setting_IncludeApn4SwUpdate>
+    <CscFeature_Setting_ReplaceLabel4DualSim>Smart dual SIM</CscFeature_Setting_ReplaceLabel4DualSim>
+    <CscFeature_VT_ConfigCapability>three_widget</CscFeature_VT_ConfigCapability>
+    <CscFeature_Vision_ConfigImageSearch>PTRXX</CscFeature_Vision_ConfigImageSearch>
+    <CscFeature_Vision_ConfigPlace>FSRXX</CscFeature_Vision_ConfigPlace>
+    <CscFeature_Vision_ConfigShopping>NLLXX</CscFeature_Vision_ConfigShopping>
+    <CscFeature_Vision_ConfigTextTranslator>GGLXX</CscFeature_Vision_ConfigTextTranslator>
+    <CscFeature_Vision_ConfigWine>VVNXX</CscFeature_Vision_ConfigWine>
+    <CscFeature_VoiceCall_ConfigRecording>RecordingAllowedByMenu</CscFeature_VoiceCall_ConfigRecording>
+    <CscFeature_VoiceCall_DisableGeoDescription>TRUE</CscFeature_VoiceCall_DisableGeoDescription>
+    <CscFeature_VoiceCall_TunnigCallWaitingToneAs>60</CscFeature_VoiceCall_TunnigCallWaitingToneAs>
+    <CscFeature_Weather_ConfigCpType>TWC</CscFeature_Weather_ConfigCpType>
+    <CscFeature_Web_ConfigDomainKeepIdleConnection>digilocker.gov.in</CscFeature_Web_ConfigDomainKeepIdleConnection>
+    <CscFeature_Web_ConfigSyncSource>TRUE</CscFeature_Web_ConfigSyncSource>
+    <CscFeature_Web_EnableAutoSimHomeUrlInProfile>FALSE</CscFeature_Web_EnableAutoSimHomeUrlInProfile>
+    <CscFeature_Web_EnableDataCompressionProxy>TRUE</CscFeature_Web_EnableDataCompressionProxy>
+    <CscFeature_mCommerce_WalletMgrConfig>Disable</CscFeature_mCommerce_WalletMgrConfig>
+  </FeatureSet>
+</SamsungMobileFeature>

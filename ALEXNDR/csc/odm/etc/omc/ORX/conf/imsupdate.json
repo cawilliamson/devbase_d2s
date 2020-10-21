@@ -1,0 +1,18 @@
+{
+  "update_version": 1,
+  "note": "enable EVS for Orange Slovakia",
+  "imsprofile_update": {
+    "profile": [
+      {
+        "name": "ORANGE Slovakia for IMS PDN",
+        "mnoname": "Orange_SK",
+        "audio_codec": "EVS,EVS_A2,AMRBE-WB,AMR-WB,AMRBE,AMR,DTMFWB,DTMF",
+        "enable_evs_codec": true,
+        "evs_bandwidth_send": "swb",
+        "evs_bandwidth_receive": "swb",
+        "evs_channel_aware_receive": "0",
+        "evs_max_red": 0
+      }
+    ]
+  }
+}

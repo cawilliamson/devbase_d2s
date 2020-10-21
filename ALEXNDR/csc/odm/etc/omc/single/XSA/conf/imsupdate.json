@@ -1,0 +1,44 @@
+{
+  "update_version": 1,
+  "note": "enable SmsoIP for Telstra_AU",
+  "globalsettings_update": 
+  {
+    "defaultsetting": {
+    },
+    "nohitsetting": {
+    },
+    "globalsetting": [
+      {
+        "mnoname": "Telstra_AU",
+        "enable_default_sms_fallback": true
+      }
+    ]
+  },  
+  "imsprofile_update": {
+    "profile": [
+      {
+        "name": "TEL VoLTE",
+        "mnoname": "Telstra_AU",
+        "network": [
+          {
+            "type": "lte",
+            "services": [
+              "mmtel",
+              "mmtel-video"
+          ],
+          "enabled": true
+          },
+		  {
+            "type": "wifi",
+            "services": [
+              "mmtel",
+              "mmtel-video",
+              "smsip"
+          ],
+          "enabled": true
+          }
+        ]        
+      }
+    ]
+  }
+}
