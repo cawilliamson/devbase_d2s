@@ -2,6 +2,7 @@
 #
 # DevBase unified installation script designed for Samsung devices
 # by ALEXNDR (_alexndr @ XDA)
+# modified by chrisaw (chrisaw @ XDA)
 #
 
 ZIPFILE=$3
