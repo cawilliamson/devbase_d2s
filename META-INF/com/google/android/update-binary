@@ -12,7 +12,7 @@ OUTFD=$2
 NAME=ALEXNDR
 ROMNAME=DevBase
 VERSION=v7.3
-BASEVERSION=G960FXXUCFTJ2
+BASEVERSION=N986BXXU1ATJ1
 
 # Detect real $OUTFD
 readlink /proc/$$/fd/$OUTFD 2>/dev/null | grep /tmp >/dev/null
@@ -524,6 +524,8 @@ EFS=$(resolve_link $(find /dev/block/platform -type l -iname efs)) && echo_log "
 DQMDBG=$(resolve_link $(find /dev/block/platform -type l -iname dqmdbg)) && echo_log "DQMDBG=$DQMDBG" # may not exist
 VENDOR=$(resolve_link $(find /dev/block/platform -type l -iname vendor)) && echo_log "VENDOR=$VENDOR" # may not exist
 ODM=$(resolve_link $(find /dev/block/platform -type l -iname odm)) && echo_log "ODM=$ODM" # may not exist
+OPTICS=$(resolve_link $(find /dev/block/platform -type l -iname optics)) && echo_log "OPTICS=$OPTICS" # may not exist
+PRISM=$(resolve_link $(find /dev/block/platform -type l -iname prism)) && echo_log "PRISM=$PRISM" # may not exist
 echo_log " "
 
 if [ -z "$BOOT" ] || [ -z "$DATA" ] || [ -z "$CACHE" ] || [ -z "$SYSTEM" ] || [ -z "$RECOVERY" ] || [ -z "$EFS" ] ; then
@@ -808,6 +810,30 @@ if [ ! -z "$VENDOR" ] ; then
     if (! is_mounted /vendor) ; then
         ui_print " "
         ui_print "Failed! Can't mount new /vendor, aborting!"
+        ui_print " "
+        abort
+    fi
+fi
+
+if [ ! -z "$OPTICS" ] ; then
+    ui_print "Installing optics, please wait..."
+    unzip_flash $NAME/images/optics.img $OPTICS || ui_print "Failed to flash optics.img -> $OPTICS"
+    mount $OPTICS /optics
+    if (! is_mounted /optics) ; then
+        ui_print " "
+        ui_print "Failed! Can't mount new /optics, aborting!"
+        ui_print " "
+        abort
+    fi
+fi
+
+if [ ! -z "$PRISM" ] ; then
+    ui_print "Installing prism, please wait..."
+    unzip_flash $NAME/images/prism.img $PRISM || ui_print "Failed to flash prism.img -> $PRISM"
+    mount $PRISM /prism
+    if (! is_mounted /prism) ; then
+        ui_print " "
+        ui_print "Failed! Can't mount new /prism, aborting!"
         ui_print " "
         abort
     fi
