@@ -1,0 +1,12 @@
+com.sec.android.usermanual
+br.com.bemobi.appsclub.vivo
+com.movile.android.appsvivo
+com.instagram.android
+com.facebook.orca
+br.com.timbrasil.meutim
+com.amazon.appmanager
+com.claroColombia.contenedor
+com.gameloft.android.gdc
+com.facebook.orca
+com.amazon.appmanager
+com.amazon.appmanager

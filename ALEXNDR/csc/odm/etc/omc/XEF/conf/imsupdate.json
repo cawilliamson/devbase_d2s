@@ -1,1 +1,0 @@
-{  "note": "VoLTE roaming support for Bouygues_FR since S9/S9  Q OS in commercial stage",  "imsprofile_update": {    "profile": [      {        "name": "Bouygues France VoLTE",        "mnoname": "Bouygues_FR",        "support_roaming": true      }    ]  }}

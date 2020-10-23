@@ -1,0 +1,7 @@
+6
+FBAppManager_NS.apk
+FBInstagram_stub.apk
+FBInstaller_NS.apk
+FBMessenger_stub.apk
+FBServices.apk
+Facebook_stub_preload.apk
