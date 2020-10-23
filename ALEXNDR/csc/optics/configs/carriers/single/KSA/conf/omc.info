@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<omcInfo>
+  <contentType>0</contentType>
+  <version>SAOMC_SM-N986B_OXM_KSA_QQ_0006</version>
+  <model>
+    <name>SM-N986B</name>
+  </model>
+  <catalog>
+    <customer>yes</customer>
+    <customerEdition>ED0003</customerEdition>
+    <cscfeature>yes</cscfeature>
+    <cscfeaturenetwork>yes</cscfeaturenetwork>
+    <carrierfeature>no</carrierfeature>
+    <cp>no</cp>
+    <imsupdate>no</imsupdate>
+  </catalog>
+  <carrierList>
+    <carrierCount>5</carrierCount>
+    <carrier>
+      <mcc>420</mcc>
+      <mnc>01</mnc>
+      <networkName>STC</networkName>
+    </carrier>
+    <carrier>
+      <mcc>420</mcc>
+      <mnc>03</mnc>
+      <networkName>Mobily Prepaid</networkName>
+    </carrier>
+    <carrier>
+      <mcc>420</mcc>
+      <mnc>03</mnc>
+      <networkName>Mobily Postpaid</networkName>
+    </carrier>
+    <carrier>
+      <mcc>420</mcc>
+      <mnc>04</mnc>
+      <networkName>Zain</networkName>
+    </carrier>
+    <carrier>
+      <mcc>420</mcc>
+      <mnc>05</mnc>
+      <networkName>Virgin</networkName>
+    </carrier>
+  </carrierList>
+</omcInfo>
