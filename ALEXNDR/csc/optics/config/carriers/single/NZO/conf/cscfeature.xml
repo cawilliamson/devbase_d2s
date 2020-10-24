@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SamsungMobileFeature>
+  <Version>ED00005</Version>
+  <Country>NEW ZEALAND</Country>
+  <CountryISO>NZ</CountryISO>
+  <SalesCode>NZO</SalesCode>
+  <FeatureSet>
+    <CscFeature_Common_DisableLTEFallbackAtLowThroughput>TRUE</CscFeature_Common_DisableLTEFallbackAtLowThroughput>
+    <CscFeature_Contact_SupportDuoVideoCall>TRUE</CscFeature_Contact_SupportDuoVideoCall>
+    <CscFeature_Setting_ConfigAboutDeviceItems>fcc=disabled;fccforspen=disabled;</CscFeature_Setting_ConfigAboutDeviceItems>
+    <CscFeature_Setting_ConfigAddSuffixModelNumber>/DS</CscFeature_Setting_ConfigAddSuffixModelNumber>
+    <CscFeature_Setting_DisableELabelCeWeeeMarks>FALSE</CscFeature_Setting_DisableELabelCeWeeeMarks>
+    <CscFeature_SystemUI_ConfigOpBranding5GIcon>5GAvailable</CscFeature_SystemUI_ConfigOpBranding5GIcon>
+    <CscFeature_Wifi_SupportBlockSkipForSetupWizard>TRUE</CscFeature_Wifi_SupportBlockSkipForSetupWizard>
+  </FeatureSet>
+</SamsungMobileFeature>

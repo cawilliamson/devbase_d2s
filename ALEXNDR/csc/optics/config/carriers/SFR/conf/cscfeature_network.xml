@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SamsungMobileFeature>
+  <NetworkVersion>ED00014</NetworkVersion>
+  <NetworkCountry>FRANCE</NetworkCountry>
+  <NetworkCountryISO>FR</NetworkCountryISO>
+  <NetworkCode>SFR</NetworkCode>
+  <FeatureSet>
+    <CscFeature_Email_UseFixedSmtpPortAs>25</CscFeature_Email_UseFixedSmtpPortAs>
+    <CscFeature_RIL_ApnControlByModem>TRUE</CscFeature_RIL_ApnControlByModem>
+    <CscFeature_RIL_ConfigNetworkTypeCapability>EUR-EUR-GSM-EUR</CscFeature_RIL_ConfigNetworkTypeCapability>
+    <CscFeature_RIL_ConfigSVNVersion>13</CscFeature_RIL_ConfigSVNVersion>
+    <CscFeature_RIL_ConfigSpecialPdpFlag>im_cn</CscFeature_RIL_ConfigSpecialPdpFlag>
+    <CscFeature_RIL_ConfigWbamr>2G</CscFeature_RIL_ConfigWbamr>
+    <CscFeature_RIL_DataPrefDataTechSnapShot>TRUE</CscFeature_RIL_DataPrefDataTechSnapShot>
+    <CscFeature_RIL_DisplayAntennaLimited>TRUE</CscFeature_RIL_DisplayAntennaLimited>
+    <CscFeature_RIL_DisplayPlmnnameSimload>TRUE</CscFeature_RIL_DisplayPlmnnameSimload>
+    <CscFeature_RIL_GcfSor>TRUE</CscFeature_RIL_GcfSor>
+    <CscFeature_RIL_PDPRetryMechanism4>XSP</CscFeature_RIL_PDPRetryMechanism4>
+    <CscFeature_RIL_ReferEonsWithoutLac>TRUE</CscFeature_RIL_ReferEonsWithoutLac>
+    <CscFeature_RIL_SendDynamicSVN>TRUE</CscFeature_RIL_SendDynamicSVN>
+    <CscFeature_RIL_SetNetworkTypeWhenRadioOff>TRUE</CscFeature_RIL_SetNetworkTypeWhenRadioOff>
+    <CscFeature_RIL_SignalstrengthPolicy>0</CscFeature_RIL_SignalstrengthPolicy>
+    <CscFeature_RIL_SupportImsClirOverriding>TRUE</CscFeature_RIL_SupportImsClirOverriding>
+    <CscFeature_RIL_SupportVolteTotalCallTime>TRUE</CscFeature_RIL_SupportVolteTotalCallTime>
+    <CscFeature_RIL_UssdConnectToCall>45,46,132,153</CscFeature_RIL_UssdConnectToCall>
+    <CscFeature_RIL_WbamrDefaultOn>TRUE</CscFeature_RIL_WbamrDefaultOn>
+    <CscFeature_Setting_CustNetworkSelMenu4>NUMERIC</CscFeature_Setting_CustNetworkSelMenu4>
+    <CscFeature_SyncML_EnableNotiDeltaBinarySizeBeforeDownload>FALSE</CscFeature_SyncML_EnableNotiDeltaBinarySizeBeforeDownload>
+    <CscFeature_VoiceCall_ConfigOpStyleForMobileNetSetting>voltesettingscommon,voltesettingEUR,VolteSetting_SFR</CscFeature_VoiceCall_ConfigOpStyleForMobileNetSetting>
+    <CscFeature_Web_SetUserAgent>VODA</CscFeature_Web_SetUserAgent>
+  </FeatureSet>
+</SamsungMobileFeature>

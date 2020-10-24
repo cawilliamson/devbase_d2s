@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SamsungMobileFeature>
+  <Version>ED00001</Version>
+  <Country>ISRAEL</Country>
+  <CountryISO>IL</CountryISO>
+  <SalesCode>ILO</SalesCode>
+  <FeatureSet>
+    <CscFeature_Calendar_SetColorOfDays>XXXXBRX</CscFeature_Calendar_SetColorOfDays>
+    <CscFeature_Common_ConfigAllowedPackagesDuringDataSaving>com.samsung.android.smartcallprovider</CscFeature_Common_ConfigAllowedPackagesDuringDataSaving>
+    <CscFeature_Common_ConfigSvcProviderForUnknownNumber>whitepages,whitepages,off</CscFeature_Common_ConfigSvcProviderForUnknownNumber>
+    <CscFeature_Common_DisablePhoneNumberFormatting>TRUE</CscFeature_Common_DisablePhoneNumberFormatting>
+    <CscFeature_Common_EnableUiDisplayMirroring>FALSE</CscFeature_Common_EnableUiDisplayMirroring>
+    <CscFeature_Common_EulaVersion>2</CscFeature_Common_EulaVersion>
+    <CscFeature_Common_Vibration4NotiDuringCall>TRUE</CscFeature_Common_Vibration4NotiDuringCall>
+    <CscFeature_Contact_SupportDuoVideoCall>TRUE</CscFeature_Contact_SupportDuoVideoCall>
+    <CscFeature_Email_AlignmentForRTL>TRUE</CscFeature_Email_AlignmentForRTL>
+    <CscFeature_Framework_HyperLinkDigit>9</CscFeature_Framework_HyperLinkDigit>
+    <CscFeature_GMS_DisableSetupWizard>FALSE</CscFeature_GMS_DisableSetupWizard>
+    <CscFeature_GMS_SetClientIDBaseMs>android-samsung-gn-rev1</CscFeature_GMS_SetClientIDBaseMs>
+    <CscFeature_GMS_SetClientIDBaseVs>android-samsung-gn-rev1</CscFeature_GMS_SetClientIDBaseVs>
+    <CscFeature_GMS_SupportSTSTool>FALSE</CscFeature_GMS_SupportSTSTool>
+    <CscFeature_Message_CMASOperator>israel</CscFeature_Message_CMASOperator>
+    <CscFeature_Message_SetDefaultFocusToMessageBody>TRUE</CscFeature_Message_SetDefaultFocusToMessageBody>
+    <CscFeature_RIL_SupportEsim>TRUE</CscFeature_RIL_SupportEsim>
+    <CscFeature_Setting_ConfigAboutDeviceItems>fcc=disabled;fccforspen=disabled;</CscFeature_Setting_ConfigAboutDeviceItems>
+    <CscFeature_Setting_ConfigAddSuffixModelNumber>/DS</CscFeature_Setting_ConfigAddSuffixModelNumber>
+    <CscFeature_Setting_SkipWifiActvDuringSetupWizard>TRUE</CscFeature_Setting_SkipWifiActvDuringSetupWizard>
+    <CscFeature_Sip_ReplaceLocalCurrencyAs>ISL</CscFeature_Sip_ReplaceLocalCurrencyAs>
+    <CscFeature_Vision_ConfigImageSearch>PTRXX</CscFeature_Vision_ConfigImageSearch>
+    <CscFeature_VoiceCall_ConfigRecording>RecordingAllowed</CscFeature_VoiceCall_ConfigRecording>
+    <CscFeature_Weather_ConfigCpType>TWC</CscFeature_Weather_ConfigCpType>
+    <CscFeature_Wifi_ConfigSnsStatus>DEFAULT_ON</CscFeature_Wifi_ConfigSnsStatus>
+  </FeatureSet>
+</SamsungMobileFeature>

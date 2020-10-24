@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SamsungMobileFeature>
+  <Version>ED00014</Version>
+  <Country>FRANCE</Country>
+  <CountryISO>FR</CountryISO>
+  <SalesCode>SFR</SalesCode>
+  <FeatureSet>
+    <CscFeature_Audio_SupportSafeMediaVolumeDialog>TRUE</CscFeature_Audio_SupportSafeMediaVolumeDialog>
+    <CscFeature_Common_ConfigAllowedPackagesDuringPowerSaving>com.altice.android.myapps.samsung,com.sfr.android.sfrjeux.samsung</CscFeature_Common_ConfigAllowedPackagesDuringPowerSaving>
+    <CscFeature_Common_ConfigSvcProviderForUnknownNumber>whitepages,whitepages,whitepages</CscFeature_Common_ConfigSvcProviderForUnknownNumber>
+    <CscFeature_Common_DisablePhoneNumberFormatting>TRUE</CscFeature_Common_DisablePhoneNumberFormatting>
+    <CscFeature_Contact_ConfigImsOpStyle>SFR</CscFeature_Contact_ConfigImsOpStyle>
+    <CscFeature_Contact_SupportDuoVideoCall>TRUE</CscFeature_Contact_SupportDuoVideoCall>
+    <CscFeature_GMS_SetClientIDBaseMs>android-samsung-gn-rev1</CscFeature_GMS_SetClientIDBaseMs>
+    <CscFeature_GMS_SetClientIDBaseVs>android-samsung-gn-rev1</CscFeature_GMS_SetClientIDBaseVs>
+    <CscFeature_Launcher_DefaultPageNumber>0</CscFeature_Launcher_DefaultPageNumber>
+    <CscFeature_Message_EnableReplyAll>TRUE</CscFeature_Message_EnableReplyAll>
+    <CscFeature_NFC_ConfigSecurityPromptPopup>all</CscFeature_NFC_ConfigSecurityPromptPopup>
+    <CscFeature_NFC_StatusBarIconType>DEFAULT</CscFeature_NFC_StatusBarIconType>
+    <CscFeature_RIL_SupportEsim>TRUE</CscFeature_RIL_SupportEsim>
+    <CscFeature_Setting_BlockToSelectDunApnType>TRUE</CscFeature_Setting_BlockToSelectDunApnType>
+    <CscFeature_Setting_ConfigAddSuffixModelNumber>/DS</CscFeature_Setting_ConfigAddSuffixModelNumber>
+    <CscFeature_Setting_SkipWifiActvDuringSetupWizard>TRUE</CscFeature_Setting_SkipWifiActvDuringSetupWizard>
+    <CscFeature_SyncML_EnableShowVersionNameAferSuccessfulUpdate>TRUE</CscFeature_SyncML_EnableShowVersionNameAferSuccessfulUpdate>
+    <CscFeature_SystemUI_ConfigOpBranding5GIcon>5GAvailable,UseOneShapedIcon</CscFeature_SystemUI_ConfigOpBranding5GIcon>
+    <CscFeature_SystemUI_ConfigOpBrandingForIndicatorIcon>SFR</CscFeature_SystemUI_ConfigOpBrandingForIndicatorIcon>
+    <CscFeature_VoiceCall_ConfigOpStyleForHdIcon>SFR_HD,SFR_CSHD</CscFeature_VoiceCall_ConfigOpStyleForHdIcon>
+    <CscFeature_VoiceCall_ConfigOptStyleForCallBarring>RemoveAll</CscFeature_VoiceCall_ConfigOptStyleForCallBarring>
+    <CscFeature_VoiceCall_DisableVTOutgoing>TRUE</CscFeature_VoiceCall_DisableVTOutgoing>
+    <CscFeature_VoiceCall_EnableCallButtonInFdnList>TRUE</CscFeature_VoiceCall_EnableCallButtonInFdnList>
+    <CscFeature_VoiceCall_SupportVolteCallBarringPassword>TRUE</CscFeature_VoiceCall_SupportVolteCallBarringPassword>
+  </FeatureSet>
+</SamsungMobileFeature>

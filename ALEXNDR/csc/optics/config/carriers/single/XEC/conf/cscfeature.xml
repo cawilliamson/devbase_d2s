@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SamsungMobileFeature>
+  <Version>ED00009</Version>
+  <Country>SPAIN</Country>
+  <CountryISO>ES</CountryISO>
+  <SalesCode>XEC</SalesCode>
+  <FeatureSet>
+    <CscFeature_Audio_SupportSafeMediaVolumeDialog>TRUE</CscFeature_Audio_SupportSafeMediaVolumeDialog>
+    <CscFeature_Common_ConfigSvcProviderForUnknownNumber>whitepages,whitepages,whitepages</CscFeature_Common_ConfigSvcProviderForUnknownNumber>
+    <CscFeature_Common_DisableLTEFallbackAtLowThroughput>TRUE</CscFeature_Common_DisableLTEFallbackAtLowThroughput>
+    <CscFeature_Common_EulaVersion>2</CscFeature_Common_EulaVersion>
+    <CscFeature_Contact_SupportDuoVideoCall>TRUE</CscFeature_Contact_SupportDuoVideoCall>
+    <CscFeature_Framework_ConfigLinkifyDigit>4;15</CscFeature_Framework_ConfigLinkifyDigit>
+    <CscFeature_GMS_DisableSetupWizard>TRUE</CscFeature_GMS_DisableSetupWizard>
+    <CscFeature_GMS_SetClientIDBaseCr>android-samsung-ss</CscFeature_GMS_SetClientIDBaseCr>
+    <CscFeature_GMS_SetClientIDBaseMs>android-tef-{country}-revc</CscFeature_GMS_SetClientIDBaseMs>
+    <CscFeature_GMS_SetClientIDBaseVs>android-tef-{country}-revc</CscFeature_GMS_SetClientIDBaseVs>
+    <CscFeature_GMS_SupportSTSTool>FALSE</CscFeature_GMS_SupportSTSTool>
+    <CscFeature_Graphics_DisableDefaultGameLauncher>TRUE</CscFeature_Graphics_DisableDefaultGameLauncher>
+    <CscFeature_Graphics_DisableGameToolsPublicWIFI>TRUE</CscFeature_Graphics_DisableGameToolsPublicWIFI>
+    <CscFeature_Message_DisableSmsToMmsConversionByTextInput>TRUE</CscFeature_Message_DisableSmsToMmsConversionByTextInput>
+    <CscFeature_Message_EnableReplyAll>TRUE</CscFeature_Message_EnableReplyAll>
+    <CscFeature_Message_MmsModeCaptureVideoMaxSize>506880</CscFeature_Message_MmsModeCaptureVideoMaxSize>
+    <CscFeature_Message_UseAddrWithinMMSWhenSendACK>TRUE</CscFeature_Message_UseAddrWithinMMSWhenSendACK>
+    <CscFeature_NFC_DefStatus>OFF</CscFeature_NFC_DefStatus>
+    <CscFeature_NFC_StatusBarIconType>DEFAULT</CscFeature_NFC_StatusBarIconType>
+    <CscFeature_RIL_SupportEsim>TRUE</CscFeature_RIL_SupportEsim>
+    <CscFeature_Settig_EnableDataTariffWizard>TRUE</CscFeature_Settig_EnableDataTariffWizard>
+    <CscFeature_Setting_ConfigAddSuffixModelNumber>/DS</CscFeature_Setting_ConfigAddSuffixModelNumber>
+    <CscFeature_Setting_SupportDefaultScreenMode6500k>TRUE</CscFeature_Setting_SupportDefaultScreenMode6500k>
+    <CscFeature_SetupWizard_DisablePrivacyPolicyAgreement>TRUE</CscFeature_SetupWizard_DisablePrivacyPolicyAgreement>
+    <CscFeature_SyncML_DiscardCpSecurityType4>None</CscFeature_SyncML_DiscardCpSecurityType4>
+    <CscFeature_SyncML_DiscardInvalidNetwpinCp>TRUE</CscFeature_SyncML_DiscardInvalidNetwpinCp>
+    <CscFeature_SyncML_SupportOmcAppDataChargePopup>TRUE</CscFeature_SyncML_SupportOmcAppDataChargePopup>
+    <CscFeature_SystemUI_ConfigDefIndicatorAdditionalSystemIcon>nfc</CscFeature_SystemUI_ConfigDefIndicatorAdditionalSystemIcon>
+    <CscFeature_SystemUI_ConfigDefQuickSettingItem>Wifi,MobileData,Location,Bluetooth,SilentMode,Nfc,RotationLock,Flashlight,AirplaneMode,BatteryMode,BlueLightFilter,DailyBoard,WifiHotspot,SecureFolder,Aod,AllShareCast,DeviceVisibility,DormantMode,Sync,EdgeLighting,Dolby,DesktopMode,SpenRemote,KidsHome</CscFeature_SystemUI_ConfigDefQuickSettingItem>
+    <CscFeature_SystemUI_ConfigOpBranding5GIcon>5GAvailable</CscFeature_SystemUI_ConfigOpBranding5GIcon>
+    <CscFeature_Vision_ConfigImageSearch>PTRXX</CscFeature_Vision_ConfigImageSearch>
+    <CscFeature_VoiceCall_ConfigOpStyleForLogs>SkipLog_214/016</CscFeature_VoiceCall_ConfigOpStyleForLogs>
+    <CscFeature_VoiceCall_EnableBlockFdnWithParticularLine>TRUE</CscFeature_VoiceCall_EnableBlockFdnWithParticularLine>
+    <CscFeature_VoiceCall_EnableDisplayVMTelNumDuringCall>TRUE</CscFeature_VoiceCall_EnableDisplayVMTelNumDuringCall>
+    <CscFeature_VoiceCall_SupportDataTariffWizard>TRUE</CscFeature_VoiceCall_SupportDataTariffWizard>
+    <CscFeature_Weather_ConfigCpType>TWC</CscFeature_Weather_ConfigCpType>
+    <CscFeature_Web_DisableChooser4>TRUE</CscFeature_Web_DisableChooser4>
+    <CscFeature_Wifi_ConfigHotSpotActionForSimStatus>turn off</CscFeature_Wifi_ConfigHotSpotActionForSimStatus>
+  </FeatureSet>
+</SamsungMobileFeature>

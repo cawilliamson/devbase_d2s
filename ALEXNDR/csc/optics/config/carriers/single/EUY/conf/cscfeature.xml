@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SamsungMobileFeature>
+  <Version>ED00004</Version>
+  <Country>SWITZERLAND</Country>
+  <CountryISO>CH</CountryISO>
+  <SalesCode>EUY</SalesCode>
+  <FeatureSet>
+    <CscFeature_Setting_ConfigAddSuffixModelNumber>/DS</CscFeature_Setting_ConfigAddSuffixModelNumber>
+    <CscFeature_SetupWizard_ConfigProvidedLocaleSet>en;fr_rCA;de;it;es_rES;pt_rPT;nl;sq_rAL;hr;mk_rMK;sr;sl;ko_KR;zh_rCN</CscFeature_SetupWizard_ConfigProvidedLocaleSet>
+    <CscFeature_SetupWizard_DisablePrivacyPolicyAgreement>TRUE</CscFeature_SetupWizard_DisablePrivacyPolicyAgreement>
+    <CscFeature_Wifi_SupportBlockSkipForSetupWizard>TRUE</CscFeature_Wifi_SupportBlockSkipForSetupWizard>
+  </FeatureSet>
+</SamsungMobileFeature>

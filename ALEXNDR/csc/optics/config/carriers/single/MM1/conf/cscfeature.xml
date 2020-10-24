@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SamsungMobileFeature>
+  <Version>ED00003</Version>
+  <Country>SINGAPORE</Country>
+  <CountryISO>SG</CountryISO>
+  <SalesCode>MM1</SalesCode>
+  <FeatureSet>
+    <CscFeature_Common_ConfigAllowedPackagesDuringDataSaving>com.samsung.android.smartcallprovider</CscFeature_Common_ConfigAllowedPackagesDuringDataSaving>
+    <CscFeature_Common_ConfigSvcProviderForUnknownNumber>whitepages,whitepages,whitepages</CscFeature_Common_ConfigSvcProviderForUnknownNumber>
+    <CscFeature_Common_DisablePhoneNumberFormatting>TRUE</CscFeature_Common_DisablePhoneNumberFormatting>
+    <CscFeature_Common_EulaVersion>2</CscFeature_Common_EulaVersion>
+    <CscFeature_Contact_ConfigImsOpStyle>MM1</CscFeature_Contact_ConfigImsOpStyle>
+    <CscFeature_Contact_ConfigOpStyleVariation>MM1</CscFeature_Contact_ConfigOpStyleVariation>
+    <CscFeature_Contact_IgnoreSpaceDuringSearch>TRUE</CscFeature_Contact_IgnoreSpaceDuringSearch>
+    <CscFeature_Contact_SupportDuoVideoCall>TRUE</CscFeature_Contact_SupportDuoVideoCall>
+    <CscFeature_FMRadio_DefaultChannelAs>87.5</CscFeature_FMRadio_DefaultChannelAs>
+    <CscFeature_FMRadio_FrequencySpaceAs>100</CscFeature_FMRadio_FrequencySpaceAs>
+    <CscFeature_GMS_SetClientIDBaseMs>android-samsung-gn-rev1</CscFeature_GMS_SetClientIDBaseMs>
+    <CscFeature_GMS_SetClientIDBaseVs>android-samsung-gn-rev1</CscFeature_GMS_SetClientIDBaseVs>
+    <CscFeature_GMS_SupportSTSTool>FALSE</CscFeature_GMS_SupportSTSTool>
+    <CscFeature_LockScreen_DisableUnlockVI>TRUE</CscFeature_LockScreen_DisableUnlockVI>
+    <CscFeature_NFC_ConfigAdvancedSettings>Enable</CscFeature_NFC_ConfigAdvancedSettings>
+    <CscFeature_NFC_ConfigDefaultAidRoute>FALSE</CscFeature_NFC_ConfigDefaultAidRoute>
+    <CscFeature_NFC_ConfigDynamicFirmwareLoading>SGP</CscFeature_NFC_ConfigDynamicFirmwareLoading>
+    <CscFeature_NFC_ConfigNonAidService>FALSE</CscFeature_NFC_ConfigNonAidService>
+    <CscFeature_RIL_SupportEsim>TRUE</CscFeature_RIL_SupportEsim>
+    <CscFeature_Setting_ConfigAboutDeviceItems>fcc=disabled;fccforspen=disabled;</CscFeature_Setting_ConfigAboutDeviceItems>
+    <CscFeature_Setting_ConfigAddSuffixModelNumber>/DS</CscFeature_Setting_ConfigAddSuffixModelNumber>
+    <CscFeature_Setting_DisableELabelCeWeeeMarks>FALSE</CscFeature_Setting_DisableELabelCeWeeeMarks>
+    <CscFeature_Setting_EnableEditingIpVersionTypeRoaming>TRUE</CscFeature_Setting_EnableEditingIpVersionTypeRoaming>
+    <CscFeature_Sip_LangQwertyType4HwKey>HW_KEYBOARD_COUNTRY_TYPE_CHINESE</CscFeature_Sip_LangQwertyType4HwKey>
+    <CscFeature_SmartSwitch_SupportAppIcon>TRUE</CscFeature_SmartSwitch_SupportAppIcon>
+    <CscFeature_SystemUI_ConfigDefQuickSettingItem>Wifi,SoundMode,Bluetooth,RotationLock,AirplaneMode,Flashlight,BatteryMode,PowerShare,MobileData,VoLte,BlueLightFilter,Hotspot,Location,DailyBoard,AllShareCast,Dnd,SecureFolder,Nfc,Aod,DeviceVisibility,Sync,UDS,EdgeLighting,Dolby,SpenRemote,KidsHome,NightMode,Routines,DesktopMode</CscFeature_SystemUI_ConfigDefQuickSettingItem>
+    <CscFeature_SystemUI_ConfigOpBranding5GIcon>5GAvailable</CscFeature_SystemUI_ConfigOpBranding5GIcon>
+    <CscFeature_VT_ConfigBearer>-CSVT</CscFeature_VT_ConfigBearer>
+    <CscFeature_VT_SupportMerge>TRUE</CscFeature_VT_SupportMerge>
+    <CscFeature_Vision_ConfigImageSearch>PTRXX</CscFeature_Vision_ConfigImageSearch>
+    <CscFeature_VoiceCall_ConfigOpStyleForHdIcon>MM1_HD</CscFeature_VoiceCall_ConfigOpStyleForHdIcon>
+    <CscFeature_VoiceCall_ConfigOpStyleForVolte>MM1_VOLTE</CscFeature_VoiceCall_ConfigOpStyleForVolte>
+    <CscFeature_VoiceCall_ConfigOpStyleForWfc>WFC_PREF_ADD_WIFI_ONLY</CscFeature_VoiceCall_ConfigOpStyleForWfc>
+    <CscFeature_Weather_ConfigCpType>TWC</CscFeature_Weather_ConfigCpType>
+    <CscFeature_Web_SetHomepageURL>https://www.m1.com.sg</CscFeature_Web_SetHomepageURL>
+    <CscFeature_Wifi_ConfigOpBranding>SingTel</CscFeature_Wifi_ConfigOpBranding>
+    <CscFeature_Wifi_ConfigSnsStatus>DEFAULT_ON</CscFeature_Wifi_ConfigSnsStatus>
+    <CscFeature_Wifi_ConfigVendorSsidList>Singtel WIFI, Wireless@SGx</CscFeature_Wifi_ConfigVendorSsidList>
+    <CscFeature_Wifi_EapMethodSetting>SIM, SingTel, Singtel WIFI</CscFeature_Wifi_EapMethodSetting>
+    <CscFeature_Wifi_RemovableDefaultAP>TRUE</CscFeature_Wifi_RemovableDefaultAP>
+  </FeatureSet>
+</SamsungMobileFeature>

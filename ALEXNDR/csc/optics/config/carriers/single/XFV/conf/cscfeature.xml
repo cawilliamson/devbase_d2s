@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SamsungMobileFeature>
+  <Version>ED00009</Version>
+  <Country>SOUTH AFRICA</Country>
+  <CountryISO>ZA</CountryISO>
+  <SalesCode>XFV</SalesCode>
+  <FeatureSet>
+    <CscFeature_Common_AutoConfigurationType>NO_DFLT_CSC, SIMBASED_OMC</CscFeature_Common_AutoConfigurationType>
+    <CscFeature_Common_ConfigAllowedPackagesDuringDataSaving>com.samsung.android.smartcallprovider</CscFeature_Common_ConfigAllowedPackagesDuringDataSaving>
+    <CscFeature_Common_ConfigEmergencyModePackages>com.ipsec.service,com.sec.android.providers.iwlansettings,com.sec.android.providers.mapcon</CscFeature_Common_ConfigEmergencyModePackages>
+    <CscFeature_Common_ConfigSvcProviderForUnknownNumber>whitepages,whitepages,off</CscFeature_Common_ConfigSvcProviderForUnknownNumber>
+    <CscFeature_Common_DisableLTEFallbackAtLowThroughput>TRUE</CscFeature_Common_DisableLTEFallbackAtLowThroughput>
+    <CscFeature_Common_EulaVersion>2</CscFeature_Common_EulaVersion>
+    <CscFeature_Contact_ConfigDuoVideoCall>ViLTE,</CscFeature_Contact_ConfigDuoVideoCall>
+    <CscFeature_Contact_ConfigImsOpStyle>XFV</CscFeature_Contact_ConfigImsOpStyle>
+    <CscFeature_Contact_SupportDuoVideoCall>TRUE</CscFeature_Contact_SupportDuoVideoCall>
+    <CscFeature_Email_AlignmentForRTL>TRUE</CscFeature_Email_AlignmentForRTL>
+    <CscFeature_GMS_SetClientIDBaseCr>android-samsung-ss</CscFeature_GMS_SetClientIDBaseCr>
+    <CscFeature_GMS_SetClientIDBaseMs>android-vf-{country}-revc</CscFeature_GMS_SetClientIDBaseMs>
+    <CscFeature_GMS_SupportSTSTool>FALSE</CscFeature_GMS_SupportSTSTool>
+    <CscFeature_Graphics_DisableGameToolsPublicWIFI>TRUE</CscFeature_Graphics_DisableGameToolsPublicWIFI>
+    <CscFeature_Message_EnableReplyAll>TRUE</CscFeature_Message_EnableReplyAll>
+    <CscFeature_Message_UseSingleShiftTableWhenComposeSMS>TRUE</CscFeature_Message_UseSingleShiftTableWhenComposeSMS>
+    <CscFeature_RIL_SupportEsim>FALSE</CscFeature_RIL_SupportEsim>
+    <CscFeature_Setting_ConfigAboutDeviceItems>fcc=disabled;fccforspen=disabled;</CscFeature_Setting_ConfigAboutDeviceItems>
+    <CscFeature_Setting_ConfigAddSuffixModelNumber>/DS</CscFeature_Setting_ConfigAddSuffixModelNumber>
+    <CscFeature_Sip_ConfigWhetherToProvideGif>disable</CscFeature_Sip_ConfigWhetherToProvideGif>
+    <CscFeature_SmartSwitch_ConfigHeadUpNotification>never</CscFeature_SmartSwitch_ConfigHeadUpNotification>
+    <CscFeature_SyncML_DeleteCpAfterTryingToInstall>TRUE</CscFeature_SyncML_DeleteCpAfterTryingToInstall>
+    <CscFeature_SyncML_DiscardInvalidNetwpinCp>TRUE</CscFeature_SyncML_DiscardInvalidNetwpinCp>
+    <CscFeature_SyncML_EnableShowVersionNameAferSuccessfulUpdate>TRUE</CscFeature_SyncML_EnableShowVersionNameAferSuccessfulUpdate>
+    <CscFeature_SyncML_HideOmcAppDetailPage>TRUE</CscFeature_SyncML_HideOmcAppDetailPage>
+    <CscFeature_SystemUI_ConfigOpBranding5GIcon>5GAvailable</CscFeature_SystemUI_ConfigOpBranding5GIcon>
+    <CscFeature_SystemUI_ConfigOpBrandingForIndicatorIcon>XFA</CscFeature_SystemUI_ConfigOpBrandingForIndicatorIcon>
+    <CscFeature_Vision_ConfigImageSearch>PTRXX</CscFeature_Vision_ConfigImageSearch>
+    <CscFeature_VoiceCall_ConfigOpStyleForHdIcon>XFV_HD</CscFeature_VoiceCall_ConfigOpStyleForHdIcon>
+    <CscFeature_VoiceCall_ConfigOpStyleForImsFunction>display_weak_rssi_alert_dialog</CscFeature_VoiceCall_ConfigOpStyleForImsFunction>
+    <CscFeature_VoiceCall_DisableSsQuery>TRUE</CscFeature_VoiceCall_DisableSsQuery>
+    <CscFeature_VoiceCall_EnableCallButtonInFdnList>TRUE</CscFeature_VoiceCall_EnableCallButtonInFdnList>
+    <CscFeature_VoiceCall_SupportShowVowifiEndCall>TRUE</CscFeature_VoiceCall_SupportShowVowifiEndCall>
+    <CscFeature_Weather_ConfigCpType>TWC</CscFeature_Weather_ConfigCpType>
+    <CscFeature_Web_BookmarkPreloadOnChrome>NEVER</CscFeature_Web_BookmarkPreloadOnChrome>
+    <CscFeature_Web_EnableAutoBookmarkSetBySim>TRUE</CscFeature_Web_EnableAutoBookmarkSetBySim>
+    <CscFeature_Wifi_ConfigSnsStatus>DEFAULT_ON</CscFeature_Wifi_ConfigSnsStatus>
+    <CscFeature_Wifi_UseRandom4digitCombinationAsSSID>TRUE</CscFeature_Wifi_UseRandom4digitCombinationAsSSID>
+  </FeatureSet>
+</SamsungMobileFeature>
