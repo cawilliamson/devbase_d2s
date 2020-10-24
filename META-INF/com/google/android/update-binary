@@ -284,8 +284,10 @@ set_csc() {
         sync
         umount /efs
         if [ ! -z "$2" ] ; then
-            if [ ! -z "$ODM" ] ; then
+            # install /odm
+            if [ ! -z "$ODM" ] || [ -d "$2/odm/" ]; then
                 umount /odm
+
                 (is_mounted /odm) && echo_log "set_csc: can't umount /odm"
                 dd bs=4096 if=$ODM of=/tmp/odm.img || echo_log "set_csc: no space left on device"
                 chown 0:0 /tmp/odm.img
@@ -312,11 +314,70 @@ set_csc() {
                     chcon -Rv u:object_r:vendor_configs_file:s0 /odm/etc >/dev/null
                     chcon -Rv u:object_r:vendor_app_file:s0 /odm/*app >/dev/null
                 fi
-            else
+            elif [ -d "$2/odm/"; then]
                 mkdir -p $OMC
                 chown 0:0 $OMC
                 chmod 751 $OMC
                 cp -af $2$OMC/* $OMC || return 2
+            fi
+
+            # install /optics
+            if [ ! -z "$OPTICS" ] && [ -d "$2/optics/" ]; then
+                umount /optics
+
+                (is_mounted /optics) && echo_log "set_csc: can't umount /optics"
+                dd bs=4096 if=$OPTICS of=/tmp/optics.img || echo_log "set_csc: no space left on device"
+                chown 0:0 /tmp/optics.img
+                for item in `ls -l /tmp/optics.img` ; do
+                    if [ "$LAST" = "root" ] && [ "$item" != "root" ] ; then
+                        OPTICSSIZE=$item
+                        break
+                    fi
+                    LAST=$item
+                done
+                rm -f /tmp/optics.img
+                echo_log "set_csc: optics_size: $OPTICSSIZE"
+                if [ $(get_prop ro.build.version.sdk) -ge 28 ] ; then OPTICSCON=vendor_file ; fi
+                echo_log "set_csc: optics_con: u:object_r:$OPTICSCON:s0"
+                echo "/optics(/.*)? u:object_r:$OPTICSCON:s0" > /tmp/file_contexts_image
+                make_ext4fs -l $OPTICSSIZE -a /optics -S /tmp/file_contexts_image $OPTICS 2>> /tmp/devbase_install.log
+                mount $OPTICS /optics || echo_log "set_csc: can't mount /optics"
+                rm -Rf /optics/* # just in case of make_ext4fs command failed
+                cp -af $2/optics/* /optics || return 2
+                chcon -Rv u:object_r:$OPTICSCON:s0 /optics/* >/dev/null # -Rv to prevent busybox's chcon bug
+                if [ "$OPTICSCON" = "vendor_file" ] ; then
+                    chcon -Rv u:object_r:vendor_configs_file:s0 /optics/configs >/dev/null
+                fi
+            fi
+
+            # install /prism
+            if [ ! -z "$PRISM" ] && [ -d "$2/prism/" ]; then
+                umount /prism
+
+                (is_mounted /prism) && echo_log "set_csc: can't umount /prism"
+                dd bs=4096 if=$PRISM of=/tmp/prism.img || echo_log "set_csc: no space left on device"
+                chown 0:0 /tmp/prism.img
+                for item in `ls -l /tmp/prism.img` ; do
+                    if [ "$LAST" = "root" ] && [ "$item" != "root" ] ; then
+                        PRISMSIZE=$item
+                        break
+                    fi
+                    LAST=$item
+                done
+                rm -f /tmp/prism.img
+                echo_log "set_csc: prism_size: $PRISMSIZE"
+                if [ $(get_prop ro.build.version.sdk) -ge 28 ] ; then PRISMCON=vendor_file ; fi
+                echo_log "set_csc: prism_con: u:object_r:$PRISMCON:s0"
+                echo "/prism(/.*)? u:object_r:$PRISMCON:s0" > /tmp/file_contexts_image
+                make_ext4fs -l $PRISMSIZE -a /prism -S /tmp/file_contexts_image $PRISM 2>> /tmp/devbase_install.log
+                mount $PRISM /prism || echo_log "set_csc: can't mount /prism"
+                rm -Rf /prism/* # just in case of make_ext4fs command failed
+                cp -af $2/prism/* /prism || return 2
+                chcon -Rv u:object_r:$PRISMSCON:s0 /pr/* >/ismdev/null # -Rv to prevent busybox's chcon bug
+                if [ "$PRISMCON" = "vendor_file" ] ; then
+                    chcon -Rv u:object_r:system_file:s0 /prism/* >/dev/null 2>&1
+                    chcon -Rv u:object_r:vendor_configs_file:s0 /prism/etc/carriers >/dev/null 2>&1
+                fi
             fi
             rm -Rf $2
         fi
@@ -338,8 +399,8 @@ set_csc() {
 
 kcsc_backup() {
     if [ -z "$1" ] ; then return 1 ; fi
-    if [ -d /odm/etc/omc ] || [ -d /odm/omc ] || [ -d /optics ]; then
-        # CSC is placed in /odm or /optics partition
+    if [ -d /odm/etc/omc ] || [ -d /odm/omc ] || [ -d /prism ]; then
+        # CSC is placed in /odm or /prism partition
         return 0
     elif [ -d /system/omc ] ; then
         mkdir -p $1/system
@@ -375,7 +436,7 @@ kcsc_backup() {
 }
 
 kcsc_restore() {
-    if [ -d /odm/etc/omc ] || [ -d /odm/omc ] || [ -d /optics ]; then return 0 ; fi
+    if [ -d /odm/etc/omc ] || [ -d /odm/omc ] || [ -d /prism ]; then return 0 ; fi
     if [ -z "$1" ] || [ ! -d $1 ] ; then return 1 ; fi
     chown -R 0:0 $1/system
     chmod -R 644 $1/system
@@ -561,6 +622,12 @@ if [ ! -z "$ODM" ] ; then
     umount $ODM || umount -l $ODM
     umount /odm || umount -l /odm
 fi
+if [ ! -z "$OPTICS" ] ; then
+    umount $OPTICS || umount -l $OPTICS
+fi
+if [ ! -z "$PRISM" ] ; then
+    umount $PRISM || umount -l $PRISM
+fi
 if [ ! -z "$VENDOR" ] ; then
     umount $VENDOR || umount -l $VENDOR
     umount /vendor || umount -l /vendor
@@ -570,13 +637,15 @@ umount /efs || umount -l /efs
 umount $SYSTEM || umount -l $SYSTEM
 umount /system || umount -l /system
 umount /system_root || umount -l /system_root
-for MOUNT_POINT in /efs /odm /system /system_root /vendor ; do
+for MOUNT_POINT in /efs /odm /optics /prism /system /system_root /vendor ; do
     if [ -L $MOUNT_POINT ] ; then
         rm -f $MOUNT_POINT
     fi
 done
 mkdir -p /cache /data /efs /system
 if [ ! -z "$ODM" ] ; then mkdir -p /odm ; fi
+if [ ! -z "$OPTICS" ] ; then mkdir -p /optics ; fi
+if [ ! -z "$PRISM" ] ; then mkdir -p /prism ; fi
 if [ ! -z "$VENDOR" ] ; then mkdir -p /vendor ; fi
 
 # Mount current system & detect system_root
@@ -589,6 +658,8 @@ fi
 
 # Mount other necessary partitions
 mount $ODM /odm
+if [ ! -z "$OPTICS" ] ; then mount $OPTICS /optics ; fi
+if [ ! -z "$PRISM" ] ; then mount $PRISM /prism ; fi
 (! is_mounted /cache) && mount /cache
 (! is_mounted /cache rw) && mount -o rw,remount /cache
 (! is_mounted /cache) && mount $CACHE /cache
