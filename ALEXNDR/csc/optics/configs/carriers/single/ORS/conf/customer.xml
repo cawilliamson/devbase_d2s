@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomerData>
   <GeneralInfo>
-    <CSCEdition>ED0005</CSCEdition>
+    <CSCEdition>ED0007</CSCEdition>
     <Country>Slovakia</Country>
     <CountryISO>SK</CountryISO>
     <Region>EUR</Region>
@@ -89,7 +89,7 @@
       </Email>
     </Messages>
     <Browser>
-      <NbBookmark>8</NbBookmark>
+      <NbBookmark>7</NbBookmark>
       <Bookmark>
         <NetworkName>Orange</NetworkName>
         <Editable>no</Editable>
@@ -136,14 +136,8 @@
         <NetworkName>default</NetworkName>
         <Editable>yes</Editable>
         <Index>7</Index>
-        <BookmarkName>Samsung Galaxy</BookmarkName>
-        <URL>https://www.samsung.com/mobile/?cid=global_owned_app_s-internet_none_none_quickaccess_bookmark_none_none&amp;utm_source=s-internet&amp;utm_medium=referral&amp;utm_campaign=quickaccess</URL>
-      </Bookmark>
-      <Bookmark>
-        <NetworkName>default</NetworkName>
-        <Editable>no</Editable>
-        <BookmarkName>Samsung Galaxy</BookmarkName>
-        <URL>https://www.samsung.com/mobile/?cid=global_owned_app_s-internet_none_none_quickaccess_bookmark_none_none&amp;utm_source=s-internet&amp;utm_medium=referral&amp;utm_campaign=quickaccess</URL>
+        <BookmarkName>Galaxy Shop</BookmarkName>
+        <URL>https://www.samsung.com/sk/mobile/?cid=sk_owned_app_s-internet_none_none_bookmark_bookmark_202008_none</URL>
       </Bookmark>
       <eManual>
         <URL>http://www.samsung.com/m-manual/orange</URL>

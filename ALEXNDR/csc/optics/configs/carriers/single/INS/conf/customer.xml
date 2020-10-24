@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomerData>
   <GeneralInfo>
-    <CSCEdition>ED0008</CSCEdition>
+    <CSCEdition>ED0011</CSCEdition>
     <Country>India</Country>
     <CountryISO>IN</CountryISO>
     <Region>SWA</Region>
@@ -1395,6 +1395,7 @@ The maximum SAR for this model as per the compliance standard and the conditions
       </CountryCert>
     </Main>
     <Contact>
+      <ContactSort>firstname</ContactSort>
       <NbPreInstalledContact>1</NbPreInstalledContact>
       <PreInstalledContact>
         <TelName>Samsung Helpline</TelName>
@@ -1499,8 +1500,8 @@ The maximum SAR for this model as per the compliance standard and the conditions
         <NetworkName>default</NetworkName>
         <Editable>yes</Editable>
         <Index>2</Index>
-        <BookmarkName>Samsung Galaxy</BookmarkName>
-        <URL>https://www.samsung.com/mobile/?cid=global_owned_app_s-internet_none_none_quickaccess_bookmark_none_none&amp;utm_source=s-internet&amp;utm_medium=referral&amp;utm_campaign=quickaccess</URL>
+        <BookmarkName>Galaxy Shop</BookmarkName>
+        <URL>https://www.samsung.com/galaxy-shop/?cid=global_owned_app_s-internet_none_none_bookmark_bookmark_202008_none</URL>
       </Bookmark>
       <eManual>
         <URL>http://www.samsung.com/m-manual/common</URL>
@@ -1604,10 +1605,11 @@ The maximum SAR for this model as per the compliance standard and the conditions
         <ProfMMS>Aircel MMS</ProfMMS>
       </ProfileHandle>
       <ProfileHandle>
-        <NbNetProfile>2</NbNetProfile>
+        <NbNetProfile>3</NbNetProfile>
         <NetworkName>CellOne_Kolkata</NetworkName>
         <ProfBrowser>Bsnl-gprs</ProfBrowser>
         <ProfMMS>Bsnl-mms</ProfMMS>
+        <ProfIMS>IMS</ProfIMS>
       </ProfileHandle>
       <ProfileHandle>
         <NbNetProfile>2</NbNetProfile>
@@ -1622,10 +1624,11 @@ The maximum SAR for this model as per the compliance standard and the conditions
         <ProfMMS>MTNL_MMS</ProfMMS>
       </ProfileHandle>
       <ProfileHandle>
-        <NbNetProfile>2</NbNetProfile>
+        <NbNetProfile>3</NbNetProfile>
         <NetworkName>CellOne_South</NetworkName>
         <ProfBrowser>CelloneSouth_gprs_n</ProfBrowser>
         <ProfMMS>CelloneSouth_mms_n</ProfMMS>
+        <ProfIMS>IMS</ProfIMS>
       </ProfileHandle>
       <ProfileHandle>
         <NbNetProfile>2</NbNetProfile>
@@ -1652,18 +1655,20 @@ The maximum SAR for this model as per the compliance standard and the conditions
         <ProfMMS>Videocon MMS</ProfMMS>
       </ProfileHandle>
       <ProfileHandle>
-        <NbNetProfile>2</NbNetProfile>
+        <NbNetProfile>3</NbNetProfile>
         <NetworkName>Cellone_North</NetworkName>
         <ProfBrowser>CelloneNorth_net</ProfBrowser>
         <ProfMMS>CelloneNorth_mms</ProfMMS>
+        <ProfIMS>IMS</ProfIMS>
       </ProfileHandle>
       <ProfileHandle>
-        <NbNetProfile>2</NbNetProfile>
+        <NbNetProfile>3</NbNetProfile>
         <NetworkName>Cellone_West</NetworkName>
         <ProfBrowser>CelloneWest_net</ProfBrowser>
         <ProfMMS>CelloneWest_mms</ProfMMS>
+        <ProfIMS>IMS</ProfIMS>
       </ProfileHandle>
-      <NbProfile>54</NbProfile>
+      <NbProfile>58</NbProfile>
       <Profile>
         <NetworkName>STEL</NetworkName>
         <IpVersion>ipv4v6</IpVersion>
@@ -2510,9 +2515,61 @@ The maximum SAR for this model as per the compliance standard and the conditions
           <APN>IMS</APN>
         </PSparam>
       </Profile>
+      <Profile>
+        <NetworkName>CellOne_Kolkata</NetworkName>
+        <IpVersion>ipv4v6</IpVersion>
+        <RoamingIpVersion>ipv4v6</RoamingIpVersion>
+        <HiddenStatus>hidden</HiddenStatus>
+        <ProfileName>IMS</ProfileName>
+        <Bearer>ps</Bearer>
+        <Protocol>http</Protocol>
+        <MTUSize>1500</MTUSize>
+        <PSparam>
+          <APN>ims</APN>
+        </PSparam>
+      </Profile>
+      <Profile>
+        <NetworkName>CellOne_South</NetworkName>
+        <IpVersion>ipv4v6</IpVersion>
+        <RoamingIpVersion>ipv4v6</RoamingIpVersion>
+        <HiddenStatus>hidden</HiddenStatus>
+        <ProfileName>IMS</ProfileName>
+        <Bearer>ps</Bearer>
+        <Protocol>http</Protocol>
+        <MTUSize>1500</MTUSize>
+        <PSparam>
+          <APN>ims</APN>
+        </PSparam>
+      </Profile>
+      <Profile>
+        <NetworkName>Cellone_North</NetworkName>
+        <IpVersion>ipv4v6</IpVersion>
+        <RoamingIpVersion>ipv4v6</RoamingIpVersion>
+        <HiddenStatus>hidden</HiddenStatus>
+        <ProfileName>IMS</ProfileName>
+        <Bearer>ps</Bearer>
+        <Protocol>http</Protocol>
+        <MTUSize>1500</MTUSize>
+        <PSparam>
+          <APN>ims</APN>
+        </PSparam>
+      </Profile>
+      <Profile>
+        <NetworkName>Cellone_West</NetworkName>
+        <IpVersion>ipv4v6</IpVersion>
+        <RoamingIpVersion>ipv4v6</RoamingIpVersion>
+        <HiddenStatus>hidden</HiddenStatus>
+        <ProfileName>IMS</ProfileName>
+        <Bearer>ps</Bearer>
+        <Protocol>http</Protocol>
+        <MTUSize>1500</MTUSize>
+        <PSparam>
+          <APN>ims</APN>
+        </PSparam>
+      </Profile>
     </Connections>
     <IMSSetting>
-      <NbSetting>7</NbSetting>
+      <NbSetting>11</NbSetting>
       <Setting>
         <NetworkName>RJIL</NetworkName>
         <Version>3.0</Version>
@@ -2669,6 +2726,82 @@ The maximum SAR for this model as per the compliance standard and the conditions
           <EnableRCS>true</EnableRCS>
           <EnableRCSchat>true</EnableRCSchat>
         </RCS>
+      </Setting>
+      <Setting>
+        <NetworkName>CellOne_Kolkata</NetworkName>
+        <Version>3.0</Version>
+        <EnableIMS>true</EnableIMS>
+        <VoLTE>
+          <EnableVoLTE>true</EnableVoLTE>
+          <EnableVoiceoverWIFI>false</EnableVoiceoverWIFI>
+          <EnableVideocall>true</EnableVideocall>
+          <EnableVoLTEindicator>true</EnableVoLTEindicator>
+          <Voice_Domain_Preference_EUTRAN>imspsvoicepreferred</Voice_Domain_Preference_EUTRAN>
+          <Emregencycall_Domain>cs</Emregencycall_Domain>
+          <SRVCCversion>10</SRVCCversion>
+          <SS_Domain_Preference>cs_always</SS_Domain_Preference>
+          <SS_PS_Control_Preference>xcap</SS_PS_Control_Preference>
+          <SS_CSFBwithIMSerror>false</SS_CSFBwithIMSerror>
+          <USSD_Domain_Preference>pscs</USSD_Domain_Preference>
+          <EnableSMSoverIP>true</EnableSMSoverIP>
+        </VoLTE>
+      </Setting>
+      <Setting>
+        <NetworkName>CellOne_South</NetworkName>
+        <Version>3.0</Version>
+        <EnableIMS>true</EnableIMS>
+        <VoLTE>
+          <EnableVoLTE>true</EnableVoLTE>
+          <EnableVoiceoverWIFI>false</EnableVoiceoverWIFI>
+          <EnableVideocall>true</EnableVideocall>
+          <EnableVoLTEindicator>true</EnableVoLTEindicator>
+          <Voice_Domain_Preference_EUTRAN>imspsvoicepreferred</Voice_Domain_Preference_EUTRAN>
+          <Emregencycall_Domain>cs</Emregencycall_Domain>
+          <SRVCCversion>10</SRVCCversion>
+          <SS_Domain_Preference>cs_always</SS_Domain_Preference>
+          <SS_PS_Control_Preference>xcap</SS_PS_Control_Preference>
+          <SS_CSFBwithIMSerror>false</SS_CSFBwithIMSerror>
+          <USSD_Domain_Preference>pscs</USSD_Domain_Preference>
+          <EnableSMSoverIP>true</EnableSMSoverIP>
+        </VoLTE>
+      </Setting>
+      <Setting>
+        <NetworkName>Cellone_North</NetworkName>
+        <Version>3.0</Version>
+        <EnableIMS>true</EnableIMS>
+        <VoLTE>
+          <EnableVoLTE>true</EnableVoLTE>
+          <EnableVoiceoverWIFI>false</EnableVoiceoverWIFI>
+          <EnableVideocall>true</EnableVideocall>
+          <EnableVoLTEindicator>true</EnableVoLTEindicator>
+          <Voice_Domain_Preference_EUTRAN>imspsvoicepreferred</Voice_Domain_Preference_EUTRAN>
+          <Emregencycall_Domain>cs</Emregencycall_Domain>
+          <SRVCCversion>10</SRVCCversion>
+          <SS_Domain_Preference>cs_always</SS_Domain_Preference>
+          <SS_PS_Control_Preference>xcap</SS_PS_Control_Preference>
+          <SS_CSFBwithIMSerror>false</SS_CSFBwithIMSerror>
+          <USSD_Domain_Preference>pscs</USSD_Domain_Preference>
+          <EnableSMSoverIP>true</EnableSMSoverIP>
+        </VoLTE>
+      </Setting>
+      <Setting>
+        <NetworkName>Cellone_West</NetworkName>
+        <Version>3.0</Version>
+        <EnableIMS>true</EnableIMS>
+        <VoLTE>
+          <EnableVoLTE>true</EnableVoLTE>
+          <EnableVoiceoverWIFI>false</EnableVoiceoverWIFI>
+          <EnableVideocall>true</EnableVideocall>
+          <EnableVoLTEindicator>true</EnableVoLTEindicator>
+          <Voice_Domain_Preference_EUTRAN>imspsvoicepreferred</Voice_Domain_Preference_EUTRAN>
+          <Emregencycall_Domain>cs</Emregencycall_Domain>
+          <SRVCCversion>10</SRVCCversion>
+          <SS_Domain_Preference>cs_always</SS_Domain_Preference>
+          <SS_PS_Control_Preference>xcap</SS_PS_Control_Preference>
+          <SS_CSFBwithIMSerror>false</SS_CSFBwithIMSerror>
+          <USSD_Domain_Preference>pscs</USSD_Domain_Preference>
+          <EnableSMSoverIP>true</EnableSMSoverIP>
+        </VoLTE>
       </Setting>
     </IMSSetting>
   </Settings>

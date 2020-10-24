@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <omcInfo>
   <contentType>0</contentType>
-  <version>SAOMC_SM-N986B_OXM_VD2_QQ_0012</version>
+  <version>SAOMC_SM-N986B_OXM_VD2_QQ_0016</version>
   <model>
     <name>SM-N986B</name>
   </model>
   <catalog>
     <customer>yes</customer>
-    <customerEdition>ED0005</customerEdition>
+    <customerEdition>ED0007</customerEdition>
     <cscfeature>yes</cscfeature>
     <cscfeaturenetwork>yes</cscfeaturenetwork>
     <carrierfeature>no</carrierfeature>
@@ -19,12 +19,12 @@
     <carrier>
       <mcc>262</mcc>
       <mnc>02</mnc>
-      <networkName>Vodafone.de</networkName>
+      <networkName>vodafone.de</networkName>
     </carrier>
     <carrier>
       <mcc>262</mcc>
       <mnc>09</mnc>
-      <networkName>Vodafone.de.lab</networkName>
+      <networkName>vodafone.de.lab</networkName>
     </carrier>
   </carrierList>
 </omcInfo>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomerData>
   <GeneralInfo>
-    <CSCEdition>ED0006</CSCEdition>
+    <CSCEdition>ED0008</CSCEdition>
     <Country>Bulgaria</Country>
     <CountryISO>BG</CountryISO>
     <Region>EUR</Region>
@@ -58,7 +58,6 @@
     <Messages>
       <SMS>
         <DeliveryReport>off</DeliveryReport>
-        <CharSupport>unicode</CharSupport>
       </SMS>
       <MMS>
         <MmsSending>

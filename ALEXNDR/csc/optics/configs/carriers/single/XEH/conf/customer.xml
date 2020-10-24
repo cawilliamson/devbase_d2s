@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomerData>
   <GeneralInfo>
-    <CSCEdition>ED0007</CSCEdition>
+    <CSCEdition>ED0008</CSCEdition>
     <Country>Hungary</Country>
     <CountryISO>HU</CountryISO>
     <Region>EUR</Region>
@@ -94,6 +94,9 @@
         </DateTimeFormat>
       </Phone>
     </Main>
+    <Contact>
+      <ContactSort>lastname</ContactSort>
+    </Contact>
     <Messages>
       <NbVoicemail>7</NbVoicemail>
       <Voicemail>
@@ -301,6 +304,8 @@
       </Profile>
       <Profile>
         <NetworkName>Telenor HU</NetworkName>
+        <IpVersion>ipv6</IpVersion>
+        <RoamingIpVersion>ipv4</RoamingIpVersion>
         <Editable>yes</Editable>
         <ProfileName>Telenor Online</ProfileName>
         <URL>http://www.google.hu/m?client={CID}&amp;source=android-home</URL>
@@ -319,6 +324,8 @@
       </Profile>
       <Profile>
         <NetworkName>Telenor HU</NetworkName>
+        <IpVersion>ipv6</IpVersion>
+        <RoamingIpVersion>ipv4</RoamingIpVersion>
         <Editable>yes</Editable>
         <ProfileName>Telenor MMS</ProfileName>
         <URL>http://mmsc.telenor.hu/</URL>
@@ -337,6 +344,7 @@
       <Profile>
         <NetworkName>Telenor HU</NetworkName>
         <IpVersion>ipv6</IpVersion>
+        <RoamingIpVersion>ipv4</RoamingIpVersion>
         <Editable>yes</Editable>
         <HiddenStatus>hidden</HiddenStatus>
         <ProfileName>IMS</ProfileName>

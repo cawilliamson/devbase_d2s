@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomerData>
   <GeneralInfo>
-    <CSCEdition>ED0008</CSCEdition>
+    <CSCEdition>ED0010</CSCEdition>
     <Country>GREECE</Country>
     <CountryISO>GR</CountryISO>
     <Region>EUR</Region>
     <SalesCode>EUR</SalesCode>
-    <NbNetworkInfo>6</NbNetworkInfo>
+    <NbNetworkInfo>7</NbNetworkInfo>
     <NetworkInfo>
       <MCCMNC>20210</MCCMNC>
       <NetworkName>WIND GR</NetworkName>
@@ -26,6 +26,11 @@
       <MCCMNC>20201</MCCMNC>
       <NetworkName>COSMOTE</NetworkName>
       <NWID>NW00347</NWID>
+    </NetworkInfo>
+    <NetworkInfo>
+      <MCCMNC>20217</MCCMNC>
+      <NetworkName>nova</NetworkName>
+      <NWID>NW00871</NWID>
     </NetworkInfo>
     <NetworkInfo>
       <MCCMNC>28010</MCCMNC>
@@ -95,6 +100,9 @@
         </DateTimeFormat>
       </Phone>
     </Main>
+    <Contact>
+      <ContactSort>lastname</ContactSort>
+    </Contact>
     <Calendar>
       <StartDay>monday</StartDay>
     </Calendar>
@@ -139,7 +147,7 @@
       </eManual>
     </Browser>
     <Connections>
-      <NbProfileHandle>6</NbProfileHandle>
+      <NbProfileHandle>7</NbProfileHandle>
       <ProfileHandle>
         <NbNetProfile>4</NbNetProfile>
         <NetworkName>WIND GR</NetworkName>
@@ -155,12 +163,12 @@
         <ProfMMS>Q MMS</ProfMMS>
       </ProfileHandle>
       <ProfileHandle>
-        <NbNetProfile>3</NbNetProfile>
+        <NbNetProfile>4</NbNetProfile>
         <NetworkName>vodafone GR</NetworkName>
         <ProfBrowser>Vf Internet</ProfBrowser>
         <ProfMMS>Vf MMS</ProfMMS>
         <ProfIMS>IMS</ProfIMS>
-        <ProfXCAP>Vf Internet</ProfXCAP>
+        <ProfXCAP>hos</ProfXCAP>
       </ProfileHandle>
       <ProfileHandle>
         <NbNetProfile>4</NbNetProfile>
@@ -198,7 +206,18 @@
         <ProfAGPS>CYTA</ProfAGPS>
         <ProfIntSharing>CYTA</ProfIntSharing>
       </ProfileHandle>
-      <NbProfile>16</NbProfile>
+      <ProfileHandle>
+        <NbNetProfile>2</NbNetProfile>
+        <NetworkName>nova</NetworkName>
+        <ProfBrowser>nova Internet</ProfBrowser>
+        <ProfMMS>nova MMS</ProfMMS>
+        <ProfEmail>nova Internet</ProfEmail>
+        <ProfStreaming>nova Internet</ProfStreaming>
+        <ProfSyncDS>nova Internet</ProfSyncDS>
+        <ProfAGPS>nova Internet</ProfAGPS>
+        <ProfIntSharing>nova Internet</ProfIntSharing>
+      </ProfileHandle>
+      <NbProfile>19</NbProfile>
       <Profile>
         <NetworkName>Q Telecom</NetworkName>
         <Editable>yes</Editable>
@@ -220,7 +239,6 @@
         <NetworkName>Q Telecom</NetworkName>
         <Editable>yes</Editable>
         <ProfileName>Q Internet</ProfileName>
-        <URL>http://samsung-gr.intercontent.de/</URL>
         <Auth>none</Auth>
         <Bearer>ps</Bearer>
         <Protocol>http</Protocol>
@@ -252,7 +270,6 @@
         <NetworkName>WIND GR</NetworkName>
         <Editable>yes</Editable>
         <ProfileName>Wind Internet</ProfileName>
-        <URL>http://samsung-gr.intercontent.de/</URL>
         <Auth>none</Auth>
         <Bearer>ps</Bearer>
         <Protocol>http</Protocol>
@@ -306,6 +323,15 @@
         <Bearer>ps</Bearer>
         <PSparam>
           <APN>ims</APN>
+        </PSparam>
+      </Profile>
+      <Profile>
+        <NetworkName>vodafone GR</NetworkName>
+        <Editable>no</Editable>
+        <ProfileName>hos</ProfileName>
+        <Bearer>ps</Bearer>
+        <PSparam>
+          <APN>hos</APN>
         </PSparam>
       </Profile>
       <Profile>
@@ -424,11 +450,6 @@
         <Auth>none</Auth>
         <Bearer>ps</Bearer>
         <Protocol>http</Protocol>
-        <Proxy>
-          <EnableFlag>on</EnableFlag>
-          <ServAddr>212.31.96.161</ServAddr>
-          <Port>8080</Port>
-        </Proxy>
         <PSparam>
           <APN>cytamobile</APN>
         </PSparam>
@@ -455,6 +476,37 @@
         <Protocol>http</Protocol>
         <PSparam>
           <APN>hos</APN>
+        </PSparam>
+      </Profile>
+      <Profile>
+        <NetworkName>nova</NetworkName>
+        <Editable>yes</Editable>
+        <ProfileName>nova Internet</ProfileName>
+        <Auth>normal</Auth>
+        <Bearer>ps</Bearer>
+        <Protocol>other</Protocol>
+        <Proxy>
+          <EnableFlag>off</EnableFlag>
+        </Proxy>
+        <PSparam>
+          <APN>internet.nova.gr</APN>
+        </PSparam>
+      </Profile>
+      <Profile>
+        <NetworkName>nova</NetworkName>
+        <Editable>yes</Editable>
+        <ProfileName>nova MMS</ProfileName>
+        <URL>http://mms.nova.gr/mms/</URL>
+        <Auth>none</Auth>
+        <Bearer>ps</Bearer>
+        <Protocol>http</Protocol>
+        <Proxy>
+          <EnableFlag>on</EnableFlag>
+          <ServAddr>212.251.24.200</ServAddr>
+          <Port>8080</Port>
+        </Proxy>
+        <PSparam>
+          <APN>mms.nova.gr</APN>
         </PSparam>
       </Profile>
     </Connections>
@@ -495,7 +547,7 @@
           <Voice_Domain_Preference_EUTRAN>imspsvoicepreferred</Voice_Domain_Preference_EUTRAN>
           <Emregencycall_Domain>cs</Emregencycall_Domain>
           <SRVCCversion>10</SRVCCversion>
-          <SS_Domain_Preference>ps_only_psregied</SS_Domain_Preference>
+          <SS_Domain_Preference>ps_only_volteregied</SS_Domain_Preference>
           <SS_PS_Control_Preference>xcap</SS_PS_Control_Preference>
           <SS_CSFBwithIMSerror>true</SS_CSFBwithIMSerror>
           <USSD_Domain_Preference>cs</USSD_Domain_Preference>

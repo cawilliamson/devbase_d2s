@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomerData>
   <GeneralInfo>
-    <CSCEdition>ED0005</CSCEdition>
+    <CSCEdition>ED0007</CSCEdition>
     <Country>Germany</Country>
     <CountryISO>DE</CountryISO>
     <Region>EUR</Region>
@@ -9,12 +9,12 @@
     <NbNetworkInfo>2</NbNetworkInfo>
     <NetworkInfo>
       <MCCMNC>26202</MCCMNC>
-      <NetworkName>Vodafone.de</NetworkName>
+      <NetworkName>vodafone.de</NetworkName>
       <NWID>NW01517</NWID>
     </NetworkInfo>
     <NetworkInfo>
       <MCCMNC>26209</MCCMNC>
-      <NetworkName>Vodafone.de.lab</NetworkName>
+      <NetworkName>vodafone.de.lab</NetworkName>
       <NWID>NW01894</NWID>
     </NetworkInfo>
   </GeneralInfo>
@@ -27,48 +27,48 @@
       <Network>
         <NbFastDormancy>8</NbFastDormancy>
         <FastDormancy>
-          <NetworkName>Vodafone.de</NetworkName>
+          <NetworkName>vodafone.de</NetworkName>
           <FastDormancyEnableStatus>off</FastDormancyEnableStatus>
           <LCDStatus>on</LCDStatus>
         </FastDormancy>
         <FastDormancy>
-          <NetworkName>Vodafone.de</NetworkName>
+          <NetworkName>vodafone.de</NetworkName>
           <FastDormancyEnableStatus>on</FastDormancyEnableStatus>
           <TimeoutValue>5</TimeoutValue>
           <LCDStatus>off</LCDStatus>
         </FastDormancy>
         <FastDormancy>
-          <NetworkName>Vodafone.de</NetworkName>
+          <NetworkName>vodafone.de</NetworkName>
           <FastDormancyEnableStatus>off</FastDormancyEnableStatus>
           <LCDStatus>on</LCDStatus>
           <Version>rel8</Version>
         </FastDormancy>
         <FastDormancy>
-          <NetworkName>Vodafone.de</NetworkName>
+          <NetworkName>vodafone.de</NetworkName>
           <FastDormancyEnableStatus>on</FastDormancyEnableStatus>
           <TimeoutValue>5</TimeoutValue>
           <LCDStatus>off</LCDStatus>
           <Version>rel8</Version>
         </FastDormancy>
         <FastDormancy>
-          <NetworkName>Vodafone.de.lab</NetworkName>
+          <NetworkName>vodafone.de.lab</NetworkName>
           <FastDormancyEnableStatus>off</FastDormancyEnableStatus>
           <LCDStatus>on</LCDStatus>
         </FastDormancy>
         <FastDormancy>
-          <NetworkName>Vodafone.de.lab</NetworkName>
+          <NetworkName>vodafone.de.lab</NetworkName>
           <FastDormancyEnableStatus>on</FastDormancyEnableStatus>
           <TimeoutValue>5</TimeoutValue>
           <LCDStatus>off</LCDStatus>
         </FastDormancy>
         <FastDormancy>
-          <NetworkName>Vodafone.de.lab</NetworkName>
+          <NetworkName>vodafone.de.lab</NetworkName>
           <FastDormancyEnableStatus>off</FastDormancyEnableStatus>
           <LCDStatus>on</LCDStatus>
           <Version>rel8</Version>
         </FastDormancy>
         <FastDormancy>
-          <NetworkName>Vodafone.de.lab</NetworkName>
+          <NetworkName>vodafone.de.lab</NetworkName>
           <FastDormancyEnableStatus>on</FastDormancyEnableStatus>
           <TimeoutValue>5</TimeoutValue>
           <LCDStatus>off</LCDStatus>
@@ -129,7 +129,7 @@
         </EmailReceiving>
         <NbAccount>2</NbAccount>
         <Account>
-          <NetworkName>Vodafone.de</NetworkName>
+          <NetworkName>vodafone.de</NetworkName>
           <AccountName>Vodafone E-Mail</AccountName>
           <EmailAddr>@vodafone.de</EmailAddr>
           <LoginType>domain_type</LoginType>
@@ -147,7 +147,7 @@
           </Outgoing>
         </Account>
         <Account>
-          <NetworkName>Vodafone.de</NetworkName>
+          <NetworkName>vodafone.de</NetworkName>
           <AccountName>Vodafone E-Mail</AccountName>
           <EmailAddr>@vodafone.de</EmailAddr>
           <LoginType>domain_type</LoginType>
@@ -174,35 +174,35 @@
     <Browser>
       <NbBookmark>6</NbBookmark>
       <Bookmark>
-        <NetworkName>Vodafone.de</NetworkName>
+        <NetworkName>vodafone.de</NetworkName>
         <BookmarkName>News</BookmarkName>
         <URL>http://vflive.de/news</URL>
       </Bookmark>
       <Bookmark>
-        <NetworkName>Vodafone.de</NetworkName>
+        <NetworkName>vodafone.de</NetworkName>
         <BookmarkName>MusicDownloads</BookmarkName>
         <URL>http://vflive.de/music</URL>
       </Bookmark>
       <Bookmark>
-        <NetworkName>Vodafone.de</NetworkName>
+        <NetworkName>vodafone.de</NetworkName>
         <BookmarkName>Spiele</BookmarkName>
         <URL>http://vflive.de/games</URL>
       </Bookmark>
       <Bookmark>
-        <NetworkName>Vodafone.de</NetworkName>
+        <NetworkName>vodafone.de</NetworkName>
         <BookmarkName>Logos &amp; Designs</BookmarkName>
         <URL>http://vflive.de/picturedownload</URL>
       </Bookmark>
       <Bookmark>
-        <NetworkName>Vodafone.de</NetworkName>
+        <NetworkName>vodafone.de</NetworkName>
         <BookmarkName>Vodafone Webseite</BookmarkName>
         <URL>http://m.vodafone.de</URL>
       </Bookmark>
       <Bookmark>
-        <NetworkName>Vodafone.de</NetworkName>
+        <NetworkName>vodafone.de</NetworkName>
         <Editable>yes</Editable>
-        <BookmarkName>Samsung Galaxy</BookmarkName>
-        <URL>https://www.samsung.com/mobile/?cid=global_owned_app_s-internet_none_none_quickaccess_bookmark_none_none&amp;utm_source=s-internet&amp;utm_medium=referral&amp;utm_campaign=quickaccess</URL>
+        <BookmarkName>Galaxy Shop</BookmarkName>
+        <URL>https://www.samsung.com/galaxy-shop/?cid=global_owned_app_s-internet_none_none_bookmark_bookmark_202008_none</URL>
       </Bookmark>
       <eManual>
         <URL>http://www.samsung.com/m-manual/voda</URL>
@@ -221,7 +221,7 @@
       <NbProfileHandle>2</NbProfileHandle>
       <ProfileHandle>
         <NbNetProfile>3</NbNetProfile>
-        <NetworkName>Vodafone.de</NetworkName>
+        <NetworkName>vodafone.de</NetworkName>
         <ProfBrowser>VF DE Web</ProfBrowser>
         <ProfMMS>VF DE Event</ProfMMS>
         <ProfIMS>IMS</ProfIMS>
@@ -229,7 +229,7 @@
       </ProfileHandle>
       <ProfileHandle>
         <NbNetProfile>3</NbNetProfile>
-        <NetworkName>Vodafone.de.lab</NetworkName>
+        <NetworkName>vodafone.de.lab</NetworkName>
         <ProfBrowser>VF DE Web</ProfBrowser>
         <ProfMMS>VF DE Event</ProfMMS>
         <ProfIMS>IMS</ProfIMS>
@@ -237,7 +237,7 @@
       </ProfileHandle>
       <NbProfile>6</NbProfile>
       <Profile>
-        <NetworkName>Vodafone.de</NetworkName>
+        <NetworkName>vodafone.de</NetworkName>
         <IpVersion>ipv4v6</IpVersion>
         <RoamingIpVersion>ipv4v6</RoamingIpVersion>
         <Editable>no</Editable>
@@ -255,7 +255,7 @@
         </PSparam>
       </Profile>
       <Profile>
-        <NetworkName>Vodafone.de</NetworkName>
+        <NetworkName>vodafone.de</NetworkName>
         <IpVersion>ipv4v6</IpVersion>
         <RoamingIpVersion>ipv4v6</RoamingIpVersion>
         <Editable>no</Editable>
@@ -275,7 +275,7 @@
         </PSparam>
       </Profile>
       <Profile>
-        <NetworkName>Vodafone.de</NetworkName>
+        <NetworkName>vodafone.de</NetworkName>
         <IpVersion>ipv4v6</IpVersion>
         <Editable>no</Editable>
         <HiddenStatus>hidden</HiddenStatus>
@@ -288,7 +288,7 @@
         </PSparam>
       </Profile>
       <Profile>
-        <NetworkName>Vodafone.de.lab</NetworkName>
+        <NetworkName>vodafone.de.lab</NetworkName>
         <IpVersion>ipv4v6</IpVersion>
         <RoamingIpVersion>ipv4v6</RoamingIpVersion>
         <Editable>yes</Editable>
@@ -306,7 +306,7 @@
         </PSparam>
       </Profile>
       <Profile>
-        <NetworkName>Vodafone.de.lab</NetworkName>
+        <NetworkName>vodafone.de.lab</NetworkName>
         <IpVersion>ipv4v6</IpVersion>
         <RoamingIpVersion>ipv4v6</RoamingIpVersion>
         <Editable>yes</Editable>
@@ -326,7 +326,7 @@
         </PSparam>
       </Profile>
       <Profile>
-        <NetworkName>Vodafone.de.lab</NetworkName>
+        <NetworkName>vodafone.de.lab</NetworkName>
         <IpVersion>ipv4v6</IpVersion>
         <Editable>yes</Editable>
         <ProfileName>IMS</ProfileName>
@@ -341,7 +341,7 @@
     <IMSSetting>
       <NbSetting>2</NbSetting>
       <Setting>
-        <NetworkName>Vodafone.de</NetworkName>
+        <NetworkName>vodafone.de</NetworkName>
         <Version>3.0</Version>
         <EnableIMS>true</EnableIMS>
         <VoLTE>
@@ -364,7 +364,7 @@
         </RCS>
       </Setting>
       <Setting>
-        <NetworkName>Vodafone.de.lab</NetworkName>
+        <NetworkName>vodafone.de.lab</NetworkName>
         <Version>3.0</Version>
         <EnableIMS>true</EnableIMS>
         <VoLTE>

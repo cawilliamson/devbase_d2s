@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <omcInfo>
   <contentType>0</contentType>
-  <version>SAOMC_SM-N986B_OXM_EUR_QQ_0010</version>
+  <version>SAOMC_SM-N986B_OXM_EUR_QQ_0012</version>
   <model>
     <name>SM-N986B</name>
   </model>
   <catalog>
     <customer>yes</customer>
-    <customerEdition>ED0008</customerEdition>
+    <customerEdition>ED0010</customerEdition>
     <cscfeature>yes</cscfeature>
     <cscfeaturenetwork>yes</cscfeaturenetwork>
     <carrierfeature>no</carrierfeature>
@@ -15,7 +15,7 @@
     <imsupdate>no</imsupdate>
   </catalog>
   <carrierList>
-    <carrierCount>6</carrierCount>
+    <carrierCount>7</carrierCount>
     <carrier>
       <mcc>202</mcc>
       <mnc>01</mnc>
@@ -35,6 +35,11 @@
       <mcc>202</mcc>
       <mnc>10</mnc>
       <networkName>WIND GR</networkName>
+    </carrier>
+    <carrier>
+      <mcc>202</mcc>
+      <mnc>17</mnc>
+      <networkName>nova</networkName>
     </carrier>
     <carrier>
       <mcc>280</mcc>

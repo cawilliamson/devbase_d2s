@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomerData>
   <GeneralInfo>
-    <CSCEdition>ED0004</CSCEdition>
+    <CSCEdition>ED0009</CSCEdition>
     <Country>UAE</Country>
     <CountryISO>AE</CountryISO>
     <Region>MEA</Region>
@@ -203,16 +203,16 @@
       </Bookmark>
       <Bookmark>
         <NetworkName>default</NetworkName>
+        <Editable>yes</Editable>
         <Index>2</Index>
-        <BookmarkName>Google</BookmarkName>
-        <URL>http://www.google.com/m?client={CID}&amp;source=android-home</URL>
+        <BookmarkName>Galaxy Shop</BookmarkName>
+        <URL>https://www.samsung.com/mobile/?cid=global_owned_app_s-internet_none_none_bookmark_bookmark_202008_none</URL>
       </Bookmark>
       <Bookmark>
         <NetworkName>default</NetworkName>
-        <Editable>yes</Editable>
         <Index>3</Index>
-        <BookmarkName>Samsung Galaxy</BookmarkName>
-        <URL>https://www.samsung.com/mobile/?cid=global_owned_app_s-internet_none_none_quickaccess_bookmark_none_none&amp;utm_source=s-internet&amp;utm_medium=referral&amp;utm_campaign=quickaccess</URL>
+        <BookmarkName>Google</BookmarkName>
+        <URL>http://www.google.com/m?client={CID}&amp;source=android-home</URL>
       </Bookmark>
       <eManual>
         <URL>http://www.samsung.com/m-manual/common</URL>
@@ -308,7 +308,7 @@
         <NbNetProfile>3</NbNetProfile>
         <NetworkName>VIVA BH</NetworkName>
         <ProfBrowser>VIVAGPRS</ProfBrowser>
-        <ProfMMS>VIVAMMS</ProfMMS>
+        <ProfMMS>stcMMS</ProfMMS>
         <ProfIMS>IMS</ProfIMS>
       </ProfileHandle>
       <NbProfile>42</NbProfile>
@@ -656,8 +656,8 @@
       <Profile>
         <NetworkName>VIVA BH</NetworkName>
         <Editable>yes</Editable>
-        <ProfileName>VIVAMMS</ProfileName>
-        <URL>http://mms.viva.com.bh:38090</URL>
+        <ProfileName>stcMMS</ProfileName>
+        <URL>http://mms.stc.com.bh:38090</URL>
         <Auth>normal</Auth>
         <Bearer>ps</Bearer>
         <Protocol>http</Protocol>
@@ -667,7 +667,7 @@
           <Port>8080</Port>
         </Proxy>
         <PSparam>
-          <APN>vivawap.bh</APN>
+          <APN>stcwap.bh</APN>
         </PSparam>
       </Profile>
       <Profile>
@@ -970,7 +970,7 @@
         <VoLTE>
           <EnableVoLTE>true</EnableVoLTE>
           <EnableVoiceoverWIFI>false</EnableVoiceoverWIFI>
-          <EnableVideocall>true</EnableVideocall>
+          <EnableVideocall>false</EnableVideocall>
           <EnableVoLTEindicator>true</EnableVoLTEindicator>
           <Voice_Domain_Preference_EUTRAN>imspsvoicepreferred</Voice_Domain_Preference_EUTRAN>
           <Emregencycall_Domain>cs</Emregencycall_Domain>

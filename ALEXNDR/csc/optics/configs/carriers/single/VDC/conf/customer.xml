@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomerData>
   <GeneralInfo>
-    <CSCEdition>ED0006</CSCEdition>
+    <CSCEdition>ED0007</CSCEdition>
     <Country>Czech Republic</Country>
     <CountryISO>CZ</CountryISO>
     <Region>EUR</Region>
@@ -213,8 +213,8 @@
       <Bookmark>
         <NetworkName>Vodafone CZ</NetworkName>
         <Editable>yes</Editable>
-        <BookmarkName>Samsung Galaxy</BookmarkName>
-        <URL>https://www.samsung.com/mobile/?cid=global_owned_app_s-internet_none_none_quickaccess_bookmark_none_none&amp;utm_source=s-internet&amp;utm_medium=referral&amp;utm_campaign=quickaccess</URL>
+        <BookmarkName>Galaxy Shop</BookmarkName>
+        <URL>https://www.samsung.com/cz/mobile/?cid=cz_owned_app_s-internet_none_none_bookmark_bookmark_202008_none</URL>
       </Bookmark>
       <Bookmark>
         <NetworkName>default</NetworkName>

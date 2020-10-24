@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomerData>
   <GeneralInfo>
-    <CSCEdition>ED0007</CSCEdition>
+    <CSCEdition>ED0010</CSCEdition>
     <Country>Nordic</Country>
     <CountryISO>SE</CountryISO>
     <Region>EUR</Region>
@@ -348,8 +348,8 @@
         <Editable>yes</Editable>
         <Index>2</Index>
         <Folder>Bookmarks</Folder>
-        <BookmarkName>Samsung Galaxy</BookmarkName>
-        <URL>https://www.samsung.com/mobile/?cid=global_owned_app_s-internet_none_none_quickaccess_bookmark_none_none&amp;utm_source=s-internet&amp;utm_medium=referral&amp;utm_campaign=quickaccess</URL>
+        <BookmarkName>Galaxy Shop</BookmarkName>
+        <URL>https://www.samsung.com/mobile/?cid=global_owned_app_s-internet_none_none_bookmark_bookmark_202008_none</URL>
       </Bookmark>
       <eManual>
         <URL>http://www.samsung.com/m-manual/common</URL>
@@ -478,11 +478,12 @@
         <ProfXCAP>Telia FI XCAP</ProfXCAP>
       </ProfileHandle>
       <ProfileHandle>
-        <NbNetProfile>3</NbNetProfile>
+        <NbNetProfile>4</NbNetProfile>
         <NetworkName>Telenor SE</NetworkName>
         <ProfBrowser>Telenor Mobilsurf</ProfBrowser>
         <ProfMMS>Telenor MMS</ProfMMS>
         <ProfIMS>Telenor IMS</ProfIMS>
+        <ProfXCAP>hos</ProfXCAP>
       </ProfileHandle>
       <ProfileHandle>
         <NbNetProfile>4</NbNetProfile>
@@ -652,7 +653,7 @@
         <NetworkName>Føroya Tele</NetworkName>
         <ProfBrowser>FT</ProfBrowser>
       </ProfileHandle>
-      <NbProfile>120</NbProfile>
+      <NbProfile>121</NbProfile>
       <Profile>
         <NetworkName>MCP</NetworkName>
         <Editable>yes</Editable>
@@ -2428,6 +2429,17 @@
           <APN>hos</APN>
         </PSparam>
       </Profile>
+      <Profile>
+        <NetworkName>Telenor SE</NetworkName>
+        <IpVersion>ipv4v6</IpVersion>
+        <Editable>yes</Editable>
+        <HiddenStatus>hidden</HiddenStatus>
+        <ProfileName>hos</ProfileName>
+        <Protocol>http</Protocol>
+        <PSparam>
+          <APN>hos</APN>
+        </PSparam>
+      </Profile>
     </Connections>
     <IMSSetting>
       <NbSetting>24</NbSetting>
@@ -2567,8 +2579,8 @@
           <EnableSMSoverIP>true</EnableSMSoverIP>
         </VoLTE>
         <RCS>
-          <EnableRCS>true</EnableRCS>
-          <EnableRCSchat>true</EnableRCSchat>
+          <EnableRCS>false</EnableRCS>
+          <EnableRCSchat>false</EnableRCSchat>
         </RCS>
       </Setting>
       <Setting>
@@ -2666,8 +2678,8 @@
           <EnableSMSoverIP>true</EnableSMSoverIP>
         </VoLTE>
         <RCS>
-          <EnableRCS>true</EnableRCS>
-          <EnableRCSchat>true</EnableRCSchat>
+          <EnableRCS>false</EnableRCS>
+          <EnableRCSchat>false</EnableRCSchat>
         </RCS>
       </Setting>
       <Setting>
@@ -2701,7 +2713,7 @@
           <Voice_Domain_Preference_EUTRAN>imspsvoicepreferred</Voice_Domain_Preference_EUTRAN>
           <Emregencycall_Domain>ps</Emregencycall_Domain>
           <SRVCCversion>10</SRVCCversion>
-          <SS_Domain_Preference>cs_always</SS_Domain_Preference>
+          <SS_Domain_Preference>ps_always</SS_Domain_Preference>
           <SS_PS_Control_Preference>xcap</SS_PS_Control_Preference>
           <SS_CSFBwithIMSerror>false</SS_CSFBwithIMSerror>
           <USSD_Domain_Preference>cs</USSD_Domain_Preference>
@@ -2746,8 +2758,8 @@
           <EnableSMSoverIP>true</EnableSMSoverIP>
         </VoLTE>
         <RCS>
-          <EnableRCS>true</EnableRCS>
-          <EnableRCSchat>true</EnableRCSchat>
+          <EnableRCS>false</EnableRCS>
+          <EnableRCSchat>false</EnableRCSchat>
         </RCS>
       </Setting>
       <Setting>
@@ -2769,8 +2781,8 @@
           <EnableSMSoverIP>true</EnableSMSoverIP>
         </VoLTE>
         <RCS>
-          <EnableRCS>true</EnableRCS>
-          <EnableRCSchat>true</EnableRCSchat>
+          <EnableRCS>false</EnableRCS>
+          <EnableRCSchat>false</EnableRCSchat>
         </RCS>
       </Setting>
       <Setting>

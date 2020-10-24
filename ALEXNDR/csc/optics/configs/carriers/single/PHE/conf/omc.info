@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <omcInfo>
   <contentType>0</contentType>
-  <version>SAOMC_SM-N986B_OXM_PHE_QQ_0009</version>
+  <version>SAOMC_SM-N986B_OXM_PHE_QQ_0016</version>
   <model>
     <name>SM-N986B</name>
   </model>
   <catalog>
     <customer>yes</customer>
-    <customerEdition>ED0008</customerEdition>
+    <customerEdition>ED0011</customerEdition>
     <cscfeature>yes</cscfeature>
     <cscfeaturenetwork>yes</cscfeaturenetwork>
     <carrierfeature>no</carrierfeature>
@@ -15,7 +15,7 @@
     <imsupdate>no</imsupdate>
   </catalog>
   <carrierList>
-    <carrierCount>43</carrierCount>
+    <carrierCount>48</carrierCount>
     <carrier>
       <mcc>213</mcc>
       <mnc>03</mnc>
@@ -84,6 +84,12 @@
     <carrier>
       <mcc>214</mcc>
       <mnc>03</mnc>
+      <spn>Virgin telco</spn>
+      <networkName>Virgin telco</networkName>
+    </carrier>
+    <carrier>
+      <mcc>214</mcc>
+      <mnc>03</mnc>
       <spn>mobil R</spn>
       <networkName>mobil R</networkName>
     </carrier>
@@ -103,6 +109,13 @@
       <mcc>214</mcc>
       <mnc>04</mnc>
       <networkName>Yoigo</networkName>
+    </carrier>
+    <carrier>
+      <mcc>214</mcc>
+      <mnc>05</mnc>
+      <subsetCode>44474553</subsetCode>
+      <codeType>HEX</codeType>
+      <networkName>DIGI Spain</networkName>
     </carrier>
     <carrier>
       <mcc>214</mcc>
@@ -226,6 +239,12 @@
     <carrier>
       <mcc>214</mcc>
       <mnc>08</mnc>
+      <spn>Virgin telco</spn>
+      <networkName>Virgin telco</networkName>
+    </carrier>
+    <carrier>
+      <mcc>214</mcc>
+      <mnc>08</mnc>
       <spn>mobil R</spn>
       <networkName>mobil R</networkName>
     </carrier>
@@ -258,6 +277,13 @@
     </carrier>
     <carrier>
       <mcc>214</mcc>
+      <mnc>22</mnc>
+      <subsetCode>44474553</subsetCode>
+      <codeType>HEX</codeType>
+      <networkName>DIGI Spain</networkName>
+    </carrier>
+    <carrier>
+      <mcc>214</mcc>
       <mnc>32</mnc>
       <spn>Tuenti</spn>
       <networkName>Tuenti</networkName>
@@ -267,6 +293,13 @@
       <mnc>34</mnc>
       <spn>Airenetworks</spn>
       <networkName>Airenetworks</networkName>
+    </carrier>
+    <carrier>
+      <mcc>226</mcc>
+      <mnc>05</mnc>
+      <subsetCode>44474553</subsetCode>
+      <codeType>HEX</codeType>
+      <networkName>DIGI Spain</networkName>
     </carrier>
   </carrierList>
 </omcInfo>
