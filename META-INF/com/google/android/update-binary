@@ -11,7 +11,7 @@ OUTFD=$2
 # ROM properties
 NAME=ALEXNDR
 ROMNAME=DevBase
-VERSION=v7.3
+VERSION=v7.4
 BASEVERSION=N986BXXU1ATJ1
 
 # Detect real $OUTFD
@@ -207,7 +207,13 @@ detect_csc() {
 detect_cscpath() {
     local NV_CSC=
     local OMC=/odm/etc/omc
-    if [ ! -d $OMC ] ; then OMC=/odm/omc ; fi
+    if [ ! -d $OMC ] ; then
+        if [ -d /optics ] ; then
+            OMC=/optics/configs/carriers
+        else
+            OMC=/odm/omc
+        fi
+    fi
     if [ -z "$ODM" ] ; then OMC=/system/omc ; fi
     if [ -d $OMC ] ; then
         if (! is_mounted /efs) ; then
@@ -222,7 +228,11 @@ detect_cscpath() {
             return 1
         fi
         umount /efs
-        CSCPATH=$OMC/$(cat $OMC/sales_code_list.dat | grep "$NV_CSC") || return 1
+        if [ -f /prism/etc/sales_code_list.dat ]; then
+            CSCPATH=$OMC/$(cat /prism/etc/sales_code_list.dat | grep "$NV_CSC") || return 1
+        else
+            CSCPATH=$OMC/$(cat $OMC/sales_code_list.dat | grep "$NV_CSC") || return 1
+        fi
     elif [ -d /system/csc ] ; then
         CSCPATH=/system/csc
     else
@@ -241,6 +251,7 @@ set_csc() {
     local OMC=/odm/etc/omc
     if [ ! -d $2$OMC ] ; then OMC=/odm/omc ; fi
     if [ -z "$ODM" ] ; then OMC=/system/omc ; fi
+    if [ -d /optics ] ; then OMC=/optics/configs/carriers ; fi
     if [ -z "$1" ] ; then return 1 ; fi
     if [ ! -z "$2" ] ; then
         chown -R 0:0 $2
@@ -327,8 +338,8 @@ set_csc() {
 
 kcsc_backup() {
     if [ -z "$1" ] ; then return 1 ; fi
-    if [ -d /odm/etc/omc ] || [ -d /odm/omc ] ; then
-        # CSC is placed in /odm partition
+    if [ -d /odm/etc/omc ] || [ -d /odm/omc ] || [ -d /optics ]; then
+        # CSC is placed in /odm or /optics partition
         return 0
     elif [ -d /system/omc ] ; then
         mkdir -p $1/system
@@ -364,7 +375,7 @@ kcsc_backup() {
 }
 
 kcsc_restore() {
-    if [ -d /odm/etc/omc ] || [ -d /odm/omc ] ; then return 0 ; fi
+    if [ -d /odm/etc/omc ] || [ -d /odm/omc ] || [ -d /optics ]; then return 0 ; fi
     if [ -z "$1" ] || [ ! -d $1 ] ; then return 1 ; fi
     chown -R 0:0 $1/system
     chmod -R 644 $1/system
@@ -466,7 +477,7 @@ virtual_debloat() {
             fi
         fi
     done
-    for CSCAPKFILE in /odm/omc_apks_list.txt /odm/omc/omc_apks_list.txt /odm/etc/omc/omc_apks_list.txt /system/omc/common_app/omc_apks_list.txt /system/etc/csc_apks_list.txt /system/etc/csc_user_apks_list.txt ; do
+    for CSCAPKFILE in /odm/omc_apks_list.txt /odm/omc/omc_apks_list.txt /odm/etc/omc/omc_apks_list.txt /prism/etc/omc_apks_list.txt /system/omc/common_app/omc_apks_list.txt /system/etc/csc_apks_list.txt /system/etc/csc_user_apks_list.txt ; do
         if [ -f $CSCAPKFILE ] ; then
             for APK in `cat $CSCAPKFILE | tr '\r' '\n' | sed '/^$/d' | cut -d'/' -f5` ; do
                 echo "$APK" >> $WORKDIR/enforceskippingpackages.tmp
@@ -739,8 +750,11 @@ if [ $? -ne 0 ] ; then
     abort
 fi
 
+
+
 unzip_file $NAME/csc/odm/etc/omc/SW_Configuration.xml /tmp/ref_csclist.xml ||
 unzip_file $NAME/csc/odm/omc/SW_Configuration.xml /tmp/ref_csclist.xml ||
+unzip_file $NAME/csc/prism/etc/SW_Configuration.xml /tmp/ref_csclist.xml ||
 unzip_file $NAME/csc/system/omc/SW_Configuration.xml /tmp/ref_csclist.xml ||
 unzip_file $NAME/csc/system/SW_Configuration.xml /tmp/ref_csclist.xml
 if [ "$CSC" != "KCSC" ] && [ -z "$(cat /tmp/ref_csclist.xml | grep "/$CSC/")" ] ; then
@@ -815,30 +829,6 @@ if [ ! -z "$VENDOR" ] ; then
     fi
 fi
 
-if [ ! -z "$OPTICS" ] ; then
-    ui_print "Installing optics, please wait..."
-    unzip_flash $NAME/images/optics.img $OPTICS || ui_print "Failed to flash optics.img -> $OPTICS"
-    mount $OPTICS /optics
-    if (! is_mounted /optics) ; then
-        ui_print " "
-        ui_print "Failed! Can't mount new /optics, aborting!"
-        ui_print " "
-        abort
-    fi
-fi
-
-if [ ! -z "$PRISM" ] ; then
-    ui_print "Installing prism, please wait..."
-    unzip_flash $NAME/images/prism.img $PRISM || ui_print "Failed to flash prism.img -> $PRISM"
-    mount $PRISM /prism
-    if (! is_mounted /prism) ; then
-        ui_print " "
-        ui_print "Failed! Can't mount new /prism, aborting!"
-        ui_print " "
-        abort
-    fi
-fi
-
 # Optional images (update if file exists in $NAME/images)
 unzip_flash $NAME/images/dqmdbg.img $DQMDBG # may not exist
 unzip_flash $NAME/images/recovery.img $RECOVERY # optional
@@ -880,7 +870,7 @@ else
 fi
 
 # Ignore apps placed in /preload (if exists)
-find /system/csc /system/etc /system/omc /odm/omc /odm/etc/omc -type f -name hidden_apks_list.txt 2>/dev/null | while read file ; do
+find /prism/etc/carriers /system/csc /system/etc /system/omc /odm/omc /odm/etc/omc -type f -name hidden_apks_list.txt 2>/dev/null | while read file ; do
     if [ -s $file ] ; then
         echo -n "" > $file
     fi
