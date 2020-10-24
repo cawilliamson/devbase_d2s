@@ -887,7 +887,17 @@ if (! is_mounted /system) ; then
     ui_print " "
     abort
 fi
-
+if [ ! -z "$ODM" ] && [ -f "$NAME/images/odm.img" ]; then
+    ui_print "Installing odm, please wait..."
+    unzip_flash $NAME/images/odm.img $ODM || ui_print "Failed to flash vendor.img -> $VENDOR"
+    mount $ODM /odm
+    if (! is_mounted /odm) ; then
+        ui_print " "
+        ui_print "Failed! Can't mount new /odm, aborting!"
+        ui_print " "
+        abort
+    fi
+fi
 if [ ! -z "$VENDOR" ] ; then
     ui_print "Installing vendor, please wait..."
     unzip_flash $NAME/images/vendor.img $VENDOR || ui_print "Failed to flash vendor.img -> $VENDOR"
