@@ -314,7 +314,7 @@ set_csc() {
                     chcon -Rv u:object_r:vendor_configs_file:s0 /odm/etc >/dev/null
                     chcon -Rv u:object_r:vendor_app_file:s0 /odm/*app >/dev/null
                 fi
-            elif [ -d "$2/odm/"; then]
+            elif [ -d "$2/odm/" ]; then
                 mkdir -p $OMC
                 chown 0:0 $OMC
                 chmod 751 $OMC
