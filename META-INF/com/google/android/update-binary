@@ -113,16 +113,32 @@ unzip_flash() {
     if ($UNZIP) ; then
         unzip -l "$ZIPFILE" | grep "$1" >/dev/null || return 1
         if ($WIPE) ; then
-            unzip -p "$ZIPFILE" $1 | cat - /dev/zero | dd bs=4096 of=$2 2>/dev/null
+            if [[ $1 == *".br" ]]; then
+                unzip -p "$ZIPFILE" $1 | /tmp/brotli -c -d - | cat - /dev/zero | dd bs=4096 of=$2 2>/dev/null
+            else
+                unzip -p "$ZIPFILE" $1 | cat - /dev/zero | dd bs=4096 of=$2 2>/dev/null
+            fi
         else
-            unzip -p "$ZIPFILE" $1 | dd bs=4096 of=$2 2>/dev/null || return 1
+            if [[ $1 == *".br" ]]; then
+                unzip -p "$ZIPFILE" $1 | /tmp/brotli -c -d - | dd bs=4096 of=$2 2>/dev/null || return 1
+            else
+                unzip -p "$ZIPFILE" $1 | dd bs=4096 of=$2 2>/dev/null || return 1
+            fi
         fi
     else
         /tmp/7za l "$ZIPFILE" | grep "$1" >/dev/null || return 1
         if ($WIPE) ; then
-            /tmp/7za e -so "$ZIPFILE" $1 | cat - /dev/zero | dd bs=4096 of=$2 2>/dev/null
+            if [[ $1 == *".br" ]]; then
+                /tmp/7za e -so "$ZIPFILE" $1 | /tmp/brotli -c -d - | cat - /dev/zero | dd bs=4096 of=$2 2>/dev/null
+            else
+                /tmp/7za e -so "$ZIPFILE" $1 | cat - /dev/zero | dd bs=4096 of=$2 2>/dev/null
+            fi
         else
-            /tmp/7za e -so "$ZIPFILE" $1 | dd bs=4096 of=$2 2>/dev/null || return 1
+            if [[ $1 == *".br" ]]; then
+                /tmp/7za e -so "$ZIPFILE" $1 | /tmp/brotli -c -d - | dd bs=4096 of=$2 2>/dev/null || return 1
+            else
+                /tmp/7za e -so "$ZIPFILE" $1 | dd bs=4096 of=$2 2>/dev/null || return 1
+            fi
         fi
     fi
     return 0
@@ -581,7 +597,9 @@ echo_log " "
 # Test if we can use "unzip" command for all files inside "$ZIPFILE" (without "unzip: short read" issue)
 unzip -l "$ZIPFILE" >/dev/null 2>&1 && UNZIP=true || UNZIP=false
 ($UNZIP) || unzip -p "$ZIPFILE" $NAME/bin/7za > /tmp/7za
+($UNZIP) || unzip -p "$ZIPFILE" $NAME/bin/brotli > /tmp/brotli
 ($UNZIP) || chmod 755 /tmp/7za
+
 ($UNZIP) && echo_log "Binary used to unpack: unzip (busybox)" || echo_log "Binary used to unpack: 7za"
 echo_log " "
 
@@ -874,7 +892,7 @@ if (is_mounted /system) ; then
     ui_print " "
     abort
 fi
-unzip_flash $NAME/images/system.img $SYSTEM || ui_print "Failed to flash system.img -> $SYSTEM"
+unzip_flash $NAME/images/system.img.br $SYSTEM || ui_print "Failed to flash system.img.br -> $SYSTEM"
 mount $SYSTEM /system # mount new system & detect system_root
 if [ -f /system/init.rc ] || [ -f /system/sepolicy ] ; then
     mkdir -p /system_root
@@ -887,9 +905,9 @@ if (! is_mounted /system) ; then
     ui_print " "
     abort
 fi
-if [ ! -z "$ODM" ] && [ -f "$NAME/images/odm.img" ]; then
+if [ ! -z "$ODM" ] && [ -f "$NAME/images/odm.img.br" ]; then
     ui_print "Installing odm, please wait..."
-    unzip_flash $NAME/images/odm.img $ODM || ui_print "Failed to flash odm.img -> $ODM"
+    unzip_flash $NAME/images/odm.img.br $ODM || ui_print "Failed to flash odm.img.br -> $ODM"
     mount $ODM /odm
     if (! is_mounted /odm) ; then
         ui_print " "
@@ -900,7 +918,7 @@ if [ ! -z "$ODM" ] && [ -f "$NAME/images/odm.img" ]; then
 fi
 if [ ! -z "$VENDOR" ] ; then
     ui_print "Installing vendor, please wait..."
-    unzip_flash $NAME/images/vendor.img $VENDOR || ui_print "Failed to flash vendor.img -> $VENDOR"
+    unzip_flash $NAME/images/vendor.img.br $VENDOR || ui_print "Failed to flash vendor.img.br -> $VENDOR"
     mount $VENDOR /vendor
     if (! is_mounted /vendor) ; then
         ui_print " "
@@ -911,8 +929,8 @@ if [ ! -z "$VENDOR" ] ; then
 fi
 
 # Optional images (update if file exists in $NAME/images)
-unzip_flash $NAME/images/dqmdbg.img $DQMDBG # may not exist
-unzip_flash $NAME/images/recovery.img $RECOVERY # optional
+unzip_flash $NAME/images/dqmdbg.img.br $DQMDBG # may not exist
+unzip_flash $NAME/images/recovery.img.br $RECOVERY # optional
 
 # build.prop overrides & additions
 set_prop ro.build.display.id $NAME.$(get_prop ro.build.version.incremental)
@@ -1002,14 +1020,14 @@ fi
 
 if ($FLASHCP) ; then
     ui_print "Installing baseband/modem..."
-    unzip_flash $NAME/images/modem.bin $MODEM || ui_print "Failed to flash modem.bin -> $MODEM"
+    unzip_flash $NAME/images/modem.bin.br $MODEM || ui_print "Failed to flash modem.bin.br -> $MODEM"
     if [ ! -z "$CPDEB" ] ; then
-        unzip_flash $NAME/images/modem_debug.bin $CPDEB || ui_print "Failed to flash modem_debug.bin -> $CPDEB"
+        unzip_flash $NAME/images/modem_debug.bin.br $CPDEB || ui_print "Failed to flash modem_debug.bin.br -> $CPDEB"
     fi
 fi
 
 ui_print "Installing stock kernel..."
-unzip_flash $NAME/images/boot.img $BOOT || ui_print "Failed to flash boot.img -> $BOOT"
+unzip_flash $NAME/images/boot.img.br $BOOT || ui_print "Failed to flash boot.img.br -> $BOOT"
 
 rmm_patcher && ui_print "Applying RMM lock prevention..."
 
