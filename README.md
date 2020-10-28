@@ -7,4 +7,4 @@ In order to build the ZIP for DevBase run the following:
   VERSION=$(grep -m1 VERSION $UPDATE_BIN | cut -d= -f2)
   BASEVERSION=$(grep -m1 BASEVERSION $UPDATE_BIN | cut -d= -f2)
 
-  zip -9 -r $ROMNAME-$VERSION-$BASEVERSION.zip * -x .git/* -x .gitignore
+  zip -9 -r $BASEVERSION-$ROMNAME-$VERSION.zip * -x .git/* -x .gitignore

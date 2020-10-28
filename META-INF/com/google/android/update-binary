@@ -599,21 +599,25 @@ unzip -l "$ZIPFILE" >/dev/null 2>&1 && UNZIP=true || UNZIP=false
 ($UNZIP) || unzip -p "$ZIPFILE" $NAME/bin/7za > /tmp/7za
 ($UNZIP) || unzip -p "$ZIPFILE" $NAME/bin/brotli > /tmp/brotli
 ($UNZIP) || chmod 755 /tmp/7za
-
-($UNZIP) && echo_log "Binary used to unpack: unzip (busybox)" || echo_log "Binary used to unpack: 7za"
+ng fo($UNZIP) && echo_log "Binary used to unpack: unzip (busybox)" || echo_log "Binary used to unpack: 7za"
 echo_log " "
 
 # Common partitions/blocks (auto-detection)
 echo_log "Detected common partitions/blocks:"
+
 BOOT=$(resolve_link $(find /dev/block/platform -type l -iname boot)) && echo_log "BOOT=$BOOT" || ui_print "Failed! BOOT block not found..."
 DATA=$(resolve_link $(find /dev/block/platform -type l -iname userdata)) && echo_log "DATA=$DATA" || ui_print "Failed! DATA block not found..."
 CACHE=$(resolve_link $(find /dev/block/platform -type l -iname cache)) && echo_log "CACHE=$CACHE" || ui_print "Failed! CACHE block not found..."
-SYSTEM=$(resolve_link $(find /dev/block/platform -type l -iname system)) && echo_log "SYSTEM=$SYSTEM" || ui_print "Failed! SYSTEM block not found..."
+if find /dev/block/platform -type l -iname super | grep "."; then
+    SUPER=$(resolve_link $(find /dev/block/platform -type l -iname super)) && echo_log "SUPER=$SUPER" || ui_print "Failed! SUPER block not found..."
+else
+    SYSTEM=$(resolve_link $(find /dev/block/platform -type l -iname system)) && echo_log "SYSTEM=$SYSTEM" || ui_print "Failed! SYSTEM block not found..."
+    ODM=$(resolve_link $(find /dev/block/platform -type l -iname odm)) && echo_log "ODM=$ODM" # may not exist
+    VENDOR=$(resolve_link $(find /dev/block/platform -type l -iname vendor)) && echo_log "VENDOR=$VENDOR" # may not exist
+fi
 RECOVERY=$(resolve_link $(find /dev/block/platform -type l -iname recovery)) && echo_log "RECOVERY=$RECOVERY" || ui_print "Failed! RECOVERY block not found..."
 EFS=$(resolve_link $(find /dev/block/platform -type l -iname efs)) && echo_log "EFS=$EFS" || ui_print "Failed! EFS block not found..."
 DQMDBG=$(resolve_link $(find /dev/block/platform -type l -iname dqmdbg)) && echo_log "DQMDBG=$DQMDBG" # may not exist
-VENDOR=$(resolve_link $(find /dev/block/platform -type l -iname vendor)) && echo_log "VENDOR=$VENDOR" # may not exist
-ODM=$(resolve_link $(find /dev/block/platform -type l -iname odm)) && echo_log "ODM=$ODM" # may not exist
 OPTICS=$(resolve_link $(find /dev/block/platform -type l -iname optics)) && echo_log "OPTICS=$OPTICS" # may not exist
 PRISM=$(resolve_link $(find /dev/block/platform -type l -iname prism)) && echo_log "PRISM=$PRISM" # may not exist
 echo_log " "
@@ -883,48 +887,64 @@ fi
 
 efs_backup && ui_print "Backing up EFS to $TARGET..." || ui_print "Backing up EFS... Failed!"
 
-ui_print "Installing system, please wait..."
-umount /system
-umount /system_root
-if (is_mounted /system) ; then
-    ui_print " "
-    ui_print "Failed! /system is busy, aborting!"
-    ui_print " "
-    abort
-fi
-unzip_flash $NAME/images/system.img.br $SYSTEM || ui_print "Failed to flash system.img.br -> $SYSTEM"
-mount $SYSTEM /system # mount new system & detect system_root
-if [ -f /system/init.rc ] || [ -f /system/sepolicy ] ; then
-    mkdir -p /system_root
-    mount -o move /system /system_root
-    mount -o bind /system_root/system /system
-fi
-if (! is_mounted /system) ; then
-    ui_print " "
-    ui_print "Failed! Can't mount new /system, aborting!"
-    ui_print " "
-    abort
-fi
-if [ ! -z "$ODM" ] && [ -f "$NAME/images/odm.img.br" ]; then
-    ui_print "Installing odm, please wait..."
-    unzip_flash $NAME/images/odm.img.br $ODM || ui_print "Failed to flash odm.img.br -> $ODM"
-    mount $ODM /odm
-    if (! is_mounted /odm) ; then
+if [ ! -z "$SUPER" ] && [ -f "$NAME/images/super.img.br" ]; then
+    ui_print "Installing super, please wait..."
+    umount /odm
+    umount /system
+    umount /system_root
+    umount /vendor
+
+    unzip_flash $NAME/images/super.img.br $SUPER || ui_print "Failed to flash super.img.br -> $SUPER"
+
+    mount /odm
+    mount /system
+    mount /system_root
+    mount /vendor
+else
+    ui_print "Installing system, please wait..."
+    umount /system
+    umount /system_root
+    if (is_mounted /system) ; then
         ui_print " "
-        ui_print "Failed! Can't mount new /odm, aborting!"
+        ui_print "Failed! /system is busy, aborting!"
         ui_print " "
         abort
     fi
-fi
-if [ ! -z "$VENDOR" ] ; then
-    ui_print "Installing vendor, please wait..."
-    unzip_flash $NAME/images/vendor.img.br $VENDOR || ui_print "Failed to flash vendor.img.br -> $VENDOR"
-    mount $VENDOR /vendor
-    if (! is_mounted /vendor) ; then
+    unzip_flash $NAME/images/system.img.br $SYSTEM || ui_print "Failed to flash system.img.br -> $SYSTEM"
+    mount $SYSTEM /system # mount new system & detect system_root
+    if [ -f /system/init.rc ] || [ -f /system/sepolicy ] ; then
+        mkdir -p /system_root
+        mount -o move /system /system_root
+        mount -o bind /system_root/system /system
+    fi
+    if (! is_mounted /system) ; then
         ui_print " "
-        ui_print "Failed! Can't mount new /vendor, aborting!"
+        ui_print "Failed! Can't mount new /system, aborting!"
         ui_print " "
         abort
+    fi
+
+    if [ ! -z "$ODM" ] && [ -f "$NAME/images/odm.img.br" ]; then
+        ui_print "Installing odm, please wait..."
+        unzip_flash $NAME/images/odm.img.br $ODM || ui_print "Failed to flash odm.img.br -> $ODM"
+        mount $ODM /odm
+        if (! is_mounted /odm) ; then
+            ui_print " "
+            ui_print "Failed! Can't mount new /odm, aborting!"
+            ui_print " "
+            abort
+        fi
+    fi
+    if [ ! -z "$VENDOR" ] ; then
+        ui_print "Installing vendor, please wait..."
+        unzip_flash $NAME/images/vendor.img.br $VENDOR || ui_print "Failed to flash vendor.img.br -> $VENDOR"
+        mount $VENDOR /vendor
+        if (! is_mounted /vendor) ; then
+            ui_print " "
+            ui_print "Failed! Can't mount new /vendor, aborting!"
+            ui_print " "
+            abort
+        fi
     fi
 fi
 
