@@ -578,10 +578,11 @@ BOOT=$(resolve_link $(find /dev/block/platform -type l -iname boot)) && echo_log
 DATA=$(resolve_link $(find /dev/block/platform -type l -iname userdata)) && echo_log "DATA=$DATA" || ui_print "Failed! DATA block not found..."
 CACHE=$(resolve_link $(find /dev/block/platform -type l -iname cache)) && echo_log "CACHE=$CACHE" || ui_print "Failed! CACHE block not found..."
 if find /dev/block/platform -type l -iname super | grep "."; then
+    SUPER=$(resolve_link $(find /dev/block/platform -type l -iname super)) && echo_log "SUPER=$SUPER" || ui_print "Failed! SUPER block not found..."
+
     SYSTEM=$(resolve_link $(find /dev/block/mapper -type l -iname system)) && echo_log "SYSTEM=$SYSTEM" || ui_print "Failed! SYSTEM block not found..."
     ODM=$(resolve_link $(find /dev/block/mapper -type l -iname odm)) && echo_log "ODM=$ODM" || ui_print "Failed! ODM block not found..."
-    SUPER=$(resolve_link $(find /dev/block/platform -type l -iname super)) && echo_log "SUPER=$SUPER" || ui_print "Failed! SUPER block not found..."
-    VENDOR=$(resolve_link $(find /dev/block/platform -type l -iname vendor)) && echo_log "VENDOR=$VENDOR" || ui_print "Failed! VENDOR block not found..."
+    VENDOR=$(resolve_link $(find /dev/block/mapper -type l -iname vendor)) && echo_log "VENDOR=$VENDOR" || ui_print "Failed! VENDOR block not found..."
 else
     SYSTEM=$(resolve_link $(find /dev/block/platform -type l -iname system)) && echo_log "SYSTEM=$SYSTEM" || ui_print "Failed! SYSTEM block not found..."
     ODM=$(resolve_link $(find /dev/block/platform -type l -iname odm)) && echo_log "ODM=$ODM" # may not exist
@@ -915,6 +916,7 @@ fi
 
 # Optional images (update if file exists in $NAME/images)
 unzip_flash $NAME/images/dqmdbg.img $DQMDBG # may not exist
+unzip_flash $NAME/images/prism.img $PRISM # may not exist
 unzip_flash $NAME/images/recovery.img $RECOVERY # optional
 
 # build.prop overrides & additions
