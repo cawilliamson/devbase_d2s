@@ -623,7 +623,7 @@ OPTICS=$(resolve_link $(find /dev/block/platform -type l -iname optics)) && echo
 PRISM=$(resolve_link $(find /dev/block/platform -type l -iname prism)) && echo_log "PRISM=$PRISM" # may not exist
 echo_log " "
 
-if [ -z "$BOOT" ] || [ -z "$DATA" ] || [ -z "$CACHE" ] || [ -z "$SYSTEM" ] || [ -z "$RECOVERY" ] || [ -z "$EFS" ] ; then
+if [ -z "$BOOT" ] || [ -z "$DATA" ] || [ -z "$CACHE" ] || ( [ -z "$SYSTEM" ] && [ -z "$SUPER" ] ) || [ -z "$RECOVERY" ] || [ -z "$EFS" ] ; then
     ui_print "Installation aborted, no changes have been made!"
     ui_print " "
     abort
