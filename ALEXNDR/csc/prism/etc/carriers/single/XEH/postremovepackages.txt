@@ -1,4 +1,0 @@
-3
-BlockchainBasicKit.apk
-DigitalKey.apk
-SamsungPayStub.apk

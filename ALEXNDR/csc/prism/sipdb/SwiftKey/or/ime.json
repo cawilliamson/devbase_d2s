@@ -1,6 +1,0 @@
-{
-    "default-layout": "oriya_smart",
-    "alternate-layouts": ["oriya"],
-    "transliteration-on-latin": true,
-    "extra-punctuation" : ["।"]
-}

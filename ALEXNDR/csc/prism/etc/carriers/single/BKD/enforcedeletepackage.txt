@@ -1,5 +1,0 @@
-4
-FortniteInstaller.apk
-SamsungDotCom.apk
-SamsungPayStub.apk
-Spotify.apk

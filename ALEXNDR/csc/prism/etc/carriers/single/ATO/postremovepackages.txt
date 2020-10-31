@@ -1,4 +1,0 @@
-3
-DigitalKey.apk
-Omc.apk
-SamsungPayStub.apk

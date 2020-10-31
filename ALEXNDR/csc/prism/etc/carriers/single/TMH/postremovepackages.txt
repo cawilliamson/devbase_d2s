@@ -1,9 +1,0 @@
-8
-BlockchainBasicKit.apk
-DigitalKey.apk
-FBInstagram_stub.apk
-FBMessenger_stub.apk
-Omc.apk
-SamsungPayStub.apk
-SwiftKey-market-arm64-v8a.apk
-SwiftKeyFactorySettings.apk

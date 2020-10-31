@@ -843,21 +843,14 @@ if [ $? -ne 0 ] ; then
     abort
 fi
 
-
-
-unzip_file $NAME/csc/odm/etc/omc/SW_Configuration.xml /tmp/ref_csclist.xml ||
-unzip_file $NAME/csc/odm/omc/SW_Configuration.xml /tmp/ref_csclist.xml ||
-unzip_file $NAME/csc/prism/etc/SW_Configuration.xml /tmp/ref_csclist.xml ||
-unzip_file $NAME/csc/system/omc/SW_Configuration.xml /tmp/ref_csclist.xml ||
-unzip_file $NAME/csc/system/SW_Configuration.xml /tmp/ref_csclist.xml
-if [ "$CSC" != "KCSC" ] && [ -z "$(cat /tmp/ref_csclist.xml | grep "/$CSC/")" ] ; then
+if [ "$CSC" != "KCSC" ] && [ -z "$(find $NAME/csc/optics -name \"$CSC\" | grep \".\")" ] ; then
     ui_print "Forced CSC is not supported!"
     CSC=KCSC
 fi
 
 if [ "$CSC" = "KCSC" ] ; then
     ui_print "Checking current CSC..."
-    detect_csc /tmp/ref_csclist.xml
+    detect_csc
     case $? in
         1)  ui_print "Failed! Installer will use $ERR_CSC..."
             ui_print " "

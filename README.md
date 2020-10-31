@@ -1,5 +1,11 @@
 # Build instructions
 
+In order to create the XZ img files run the following:
+
+  pushd ALEXNDR/images/
+  for f in *.img; do xz -9 -z -e ${f}; done
+  popd
+
 In order to build the ZIP for DevBase run the following:
 
   UPDATE_BIN="META-INF/com/google/android/update-binary"

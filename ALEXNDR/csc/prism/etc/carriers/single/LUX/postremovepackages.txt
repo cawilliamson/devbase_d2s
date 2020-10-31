@@ -1,7 +1,0 @@
-6
-BlockchainBasicKit.apk
-DigitalKey.apk
-FBInstagram_stub.apk
-FBMessenger_stub.apk
-Omc.apk
-SamsungPayStub.apk

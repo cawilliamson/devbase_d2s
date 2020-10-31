@@ -1,6 +1,0 @@
-{
-    "default-layout": "hindi_smart",
-    "transliteration-on-latin": true,
-    "alternate-layouts": ["nepali"],
-    "extra-punctuation" : ["।"]
-}

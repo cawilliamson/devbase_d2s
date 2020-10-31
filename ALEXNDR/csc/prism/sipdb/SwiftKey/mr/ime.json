@@ -1,6 +1,0 @@
-{
-    "default-layout": "marathi_smart",
-    "alternate-layouts": ["marathi"],
-    "transliteration-on-latin": true,
-    "extra-punctuation" : ["।"]
-}
