@@ -13,6 +13,7 @@ NAME=ALEXNDR
 ROMNAME=DevBase
 VERSION=v7.4
 BASEVERSION=N986BXXU1ATJ1
+USE_XZ=true
 
 # Detect real $OUTFD
 readlink /proc/$$/fd/$OUTFD 2>/dev/null | grep /tmp >/dev/null
@@ -113,14 +114,14 @@ unzip_flash() {
     if ($UNZIP) ; then
         unzip -l "$ZIPFILE" | grep "$1" >/dev/null || return 1
         if ($WIPE) ; then
-            if [[ $1 == *".xz" ]]; then
-                unzip -p "$ZIPFILE" $1 | /tmp/xz -c -d -f - | cat - /dev/zero | dd bs=4096 of=$2 2>/dev/null
+            if [ $USE_XZ == "true" ]; then
+                unzip -p "$ZIPFILE" $1.xz | /tmp/xz -c -d -f - | cat - /dev/zero | dd bs=4096 of=$2 2>/dev/null
             else
                 unzip -p "$ZIPFILE" $1 | cat - /dev/zero | dd bs=4096 of=$2 2>/dev/null
             fi
         else
-            if [[ $1 == *".xz" ]]; then
-                unzip -p "$ZIPFILE" $1 | /tmp/xz -c -d -f - | dd bs=4096 of=$2 2>/dev/null || return 1
+            if [ $USE_XZ == "true" ]; then
+                unzip -p "$ZIPFILE" $1.xz | /tmp/xz -c -d -f - | dd bs=4096 of=$2 2>/dev/null || return 1
             else
                 unzip -p "$ZIPFILE" $1 | dd bs=4096 of=$2 2>/dev/null || return 1
             fi
@@ -128,14 +129,14 @@ unzip_flash() {
     else
         /tmp/7za l "$ZIPFILE" | grep "$1" >/dev/null || return 1
         if ($WIPE) ; then
-            if [[ $1 == *".xz" ]]; then
-                /tmp/7za e -so "$ZIPFILE" $1 | /tmp/xz -c -d -f - | cat - /dev/zero | dd bs=4096 of=$2 2>/dev/null
+            if [ $USE_XZ == "true" ]; then
+                /tmp/7za e -so "$ZIPFILE" $1.xz | /tmp/xz -c -d -f - | cat - /dev/zero | dd bs=4096 of=$2 2>/dev/null
             else
                 /tmp/7za e -so "$ZIPFILE" $1 | cat - /dev/zero | dd bs=4096 of=$2 2>/dev/null
             fi
         else
-            if [[ $1 == *".xz" ]]; then
-                /tmp/7za e -so "$ZIPFILE" $1 | /tmp/xz -c -d -f - | dd bs=4096 of=$2 2>/dev/null || return 1
+            if [ $USE_XZ == "true" ]; then
+                /tmp/7za e -so "$ZIPFILE" $1.xz | /tmp/xz -c -d -f - | dd bs=4096 of=$2 2>/dev/null || return 1
             else
                 /tmp/7za e -so "$ZIPFILE" $1 | dd bs=4096 of=$2 2>/dev/null || return 1
             fi
@@ -302,7 +303,6 @@ set_csc() {
             # install /odm
             if [ ! -z "$ODM" ] || [ -d "$2/odm/" ]; then
                 umount /odm
-
                 (is_mounted /odm) && echo_log "set_csc: can't umount /odm"
                 dd bs=4096 if=$ODM of=/tmp/odm.img || echo_log "set_csc: no space left on device"
                 chown 0:0 /tmp/odm.img
@@ -339,7 +339,6 @@ set_csc() {
             # install /optics
             if [ ! -z "$OPTICS" ] && [ -d "$2/optics/" ]; then
                 umount /optics
-
                 (is_mounted /optics) && echo_log "set_csc: can't umount /optics"
                 dd bs=4096 if=$OPTICS of=/tmp/optics.img || echo_log "set_csc: no space left on device"
                 chown 0:0 /tmp/optics.img
@@ -362,36 +361,6 @@ set_csc() {
                 chcon -Rv u:object_r:$OPTICSCON:s0 /optics/* >/dev/null # -Rv to prevent busybox's chcon bug
                 if [ "$OPTICSCON" = "vendor_file" ] ; then
                     chcon -Rv u:object_r:vendor_configs_file:s0 /optics/configs >/dev/null
-                fi
-            fi
-
-            # install /prism
-            if [ ! -z "$PRISM" ] && [ -d "$2/prism/" ]; then
-                umount /prism
-
-                (is_mounted /prism) && echo_log "set_csc: can't umount /prism"
-                dd bs=4096 if=$PRISM of=/tmp/prism.img || echo_log "set_csc: no space left on device"
-                chown 0:0 /tmp/prism.img
-                for item in `ls -l /tmp/prism.img` ; do
-                    if [ "$LAST" = "root" ] && [ "$item" != "root" ] ; then
-                        PRISMSIZE=$item
-                        break
-                    fi
-                    LAST=$item
-                done
-                rm -f /tmp/prism.img
-                echo_log "set_csc: prism_size: $PRISMSIZE"
-                if [ $(get_prop ro.build.version.sdk) -ge 28 ] ; then PRISMCON=vendor_file ; fi
-                echo_log "set_csc: prism_con: u:object_r:$PRISMCON:s0"
-                echo "/prism(/.*)? u:object_r:$PRISMCON:s0" > /tmp/file_contexts_image
-                make_ext4fs -l $PRISMSIZE -a /prism -S /tmp/file_contexts_image $PRISM 2>> /tmp/devbase_install.log
-                mount $PRISM /prism || echo_log "set_csc: can't mount /prism"
-                rm -Rf /prism/* # just in case of make_ext4fs command failed
-                cp -af $2/prism/* /prism || return 2
-                chcon -Rv u:object_r:$PRISMSCON:s0 /pr/* >/ismdev/null # -Rv to prevent busybox's chcon bug
-                if [ "$PRISMCON" = "vendor_file" ] ; then
-                    chcon -Rv u:object_r:system_file:s0 /prism/* >/dev/null 2>&1
-                    chcon -Rv u:object_r:vendor_configs_file:s0 /prism/etc/carriers >/dev/null 2>&1
                 fi
             fi
             rm -Rf $2
@@ -605,7 +574,6 @@ chmod 755 /tmp/xz
 
 # Common partitions/blocks (auto-detection)
 echo_log "Detected common partitions/blocks:"
-
 BOOT=$(resolve_link $(find /dev/block/platform -type l -iname boot)) && echo_log "BOOT=$BOOT" || ui_print "Failed! BOOT block not found..."
 DATA=$(resolve_link $(find /dev/block/platform -type l -iname userdata)) && echo_log "DATA=$DATA" || ui_print "Failed! DATA block not found..."
 CACHE=$(resolve_link $(find /dev/block/platform -type l -iname cache)) && echo_log "CACHE=$CACHE" || ui_print "Failed! CACHE block not found..."
@@ -803,7 +771,7 @@ fi
 echo "$ZIPNAME" | grep "^[A-Z][0-9A-Z][0-9A-Z]_" >/dev/null && CSC=$(echo "$ZIPNAME" | cut -c-3)
 if [ "$CSC" != "KCSC" ] ; then
     ui_print "NOTE: CSC has been forced to $CSC..."
-    ugi_print " "
+    ui_print " "
 fi
 
 # Exit if we can't mount /system
@@ -847,7 +815,7 @@ if [ $? -ne 0 ] ; then
     abort
 fi
 
-if [ "$CSC" != "KCSC" ] && [ -z "$(find $NAME/csc/optics -name \"$CSC\" | grep \".\")" ] ; then
+if [ "$CSC" != "KCSC" ] && [ -z "$(find $NAME/csc/{odm,optics} -name \"$CSC\" | grep \".\")" ] ; then
     ui_print "Forced CSC is not supported!"
     CSC=KCSC
 fi
@@ -884,14 +852,14 @@ fi
 
 efs_backup && ui_print "Backing up EFS to $TARGET..." || ui_print "Backing up EFS... Failed!"
 
-if [ ! -z "$SUPER" ] && [ -f "$NAME/images/super.img.xz" ]; then
+if [ ! -z "$SUPER" ]; then
     ui_print "Installing super, please wait..."
     umount /odm
     umount /system
     umount /system_root
     umount /vendor
 
-    unzip_flash $NAME/images/super.img.xz $SUPER || ui_print "Failed to flash super.img.xz -> $SUPER"
+    unzip_flash $NAME/images/super.img $SUPER || ui_print "Failed to flash super.img -> $SUPER"
 
     mount /odm
     mount /system
@@ -907,7 +875,7 @@ else
         ui_print " "
         abort
     fi
-    unzip_flash $NAME/images/system.img.xz $SYSTEM || ui_print "Failed to flash system.img.xz -> $SYSTEM"
+    unzip_flash $NAME/images/system.img $SYSTEM || ui_print "Failed to flash system.img -> $SYSTEM"
     mount $SYSTEM /system # mount new system & detect system_root
     if [ -f /system/init.rc ] || [ -f /system/sepolicy ] ; then
         mkdir -p /system_root
@@ -921,9 +889,9 @@ else
         abort
     fi
 
-    if [ ! -z "$ODM" ] && [ -f "$NAME/images/odm.img.xz" ]; then
+    if [ ! -z "$ODM" ] && [ -f "$NAME/images/odm.img" ]; then
         ui_print "Installing odm, please wait..."
-        unzip_flash $NAME/images/odm.img.xz $ODM || ui_print "Failed to flash odm.img.xz -> $ODM"
+        unzip_flash $NAME/images/odm.img $ODM || ui_print "Failed to flash odm.img -> $ODM"
         mount $ODM /odm
         if (! is_mounted /odm) ; then
             ui_print " "
@@ -934,7 +902,7 @@ else
     fi
     if [ ! -z "$VENDOR" ] ; then
         ui_print "Installing vendor, please wait..."
-        unzip_flash $NAME/images/vendor.img.xz $VENDOR || ui_print "Failed to flash vendor.img.xz -> $VENDOR"
+        unzip_flash $NAME/images/vendor.img $VENDOR || ui_print "Failed to flash vendor.img -> $VENDOR"
         mount $VENDOR /vendor
         if (! is_mounted /vendor) ; then
             ui_print " "
@@ -946,8 +914,8 @@ else
 fi
 
 # Optional images (update if file exists in $NAME/images)
-unzip_flash $NAME/images/dqmdbg.img.xz $DQMDBG # may not exist
-unzip_flash $NAME/images/recovery.img.xz $RECOVERY # optional
+unzip_flash $NAME/images/dqmdbg.img $DQMDBG # may not exist
+unzip_flash $NAME/images/recovery.img $RECOVERY # optional
 
 # build.prop overrides & additions
 set_prop ro.build.display.id $NAME.$(get_prop ro.build.version.incremental)
@@ -1037,14 +1005,14 @@ fi
 
 if ($FLASHCP) ; then
     ui_print "Installing baseband/modem..."
-    unzip_flash $NAME/images/modem.bin.xz $MODEM || ui_print "Failed to flash modem.bin.xz -> $MODEM"
+    unzip_flash $NAME/images/modem.bin $MODEM || ui_print "Failed to flash modem.bin -> $MODEM"
     if [ ! -z "$CPDEB" ] ; then
-        unzip_flash $NAME/images/modem_debug.bin.xz $CPDEB || ui_print "Failed to flash modem_debug.bin.xz -> $CPDEB"
+        unzip_flash $NAME/images/modem_debug.bin $CPDEB || ui_print "Failed to flash modem_debug.bin -> $CPDEB"
     fi
 fi
 
 ui_print "Installing stock kernel..."
-unzip_flash $NAME/images/boot.img.xz $BOOT || ui_print "Failed to flash boot.img.xz -> $BOOT"
+unzip_flash $NAME/images/boot.img $BOOT || ui_print "Failed to flash boot.img -> $BOOT"
 
 rmm_patcher && ui_print "Applying RMM lock prevention..."
 
