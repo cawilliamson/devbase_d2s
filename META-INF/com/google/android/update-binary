@@ -114,13 +114,13 @@ unzip_flash() {
         unzip -l "$ZIPFILE" | grep "$1" >/dev/null || return 1
         if ($WIPE) ; then
             if [[ $1 == *".xz" ]]; then
-                unzip -p "$ZIPFILE" $1 | /tmp/xz -c -d - | cat - /dev/zero | dd bs=4096 of=$2 2>/dev/null
+                unzip -p "$ZIPFILE" $1 | /tmp/xz -c -d -f - | cat - /dev/zero | dd bs=4096 of=$2 2>/dev/null
             else
                 unzip -p "$ZIPFILE" $1 | cat - /dev/zero | dd bs=4096 of=$2 2>/dev/null
             fi
         else
             if [[ $1 == *".xz" ]]; then
-                unzip -p "$ZIPFILE" $1 | /tmp/xz -c -d - | dd bs=4096 of=$2 2>/dev/null || return 1
+                unzip -p "$ZIPFILE" $1 | /tmp/xz -c -d -f - | dd bs=4096 of=$2 2>/dev/null || return 1
             else
                 unzip -p "$ZIPFILE" $1 | dd bs=4096 of=$2 2>/dev/null || return 1
             fi
@@ -129,13 +129,13 @@ unzip_flash() {
         /tmp/7za l "$ZIPFILE" | grep "$1" >/dev/null || return 1
         if ($WIPE) ; then
             if [[ $1 == *".xz" ]]; then
-                /tmp/7za e -so "$ZIPFILE" $1 | /tmp/xz -c -d - | cat - /dev/zero | dd bs=4096 of=$2 2>/dev/null
+                /tmp/7za e -so "$ZIPFILE" $1 | /tmp/xz -c -d -f - | cat - /dev/zero | dd bs=4096 of=$2 2>/dev/null
             else
                 /tmp/7za e -so "$ZIPFILE" $1 | cat - /dev/zero | dd bs=4096 of=$2 2>/dev/null
             fi
         else
             if [[ $1 == *".xz" ]]; then
-                /tmp/7za e -so "$ZIPFILE" $1 | /tmp/xz -c -d - | dd bs=4096 of=$2 2>/dev/null || return 1
+                /tmp/7za e -so "$ZIPFILE" $1 | /tmp/xz -c -d -f - | dd bs=4096 of=$2 2>/dev/null || return 1
             else
                 /tmp/7za e -so "$ZIPFILE" $1 | dd bs=4096 of=$2 2>/dev/null || return 1
             fi
@@ -596,11 +596,12 @@ echo_log " "
 # Test if we can use "unzip" command for all files inside "$ZIPFILE" (without "unzip: short read" issue)
 unzip -l "$ZIPFILE" >/dev/null 2>&1 && UNZIP=true || UNZIP=false
 ($UNZIP) || unzip -p "$ZIPFILE" $NAME/bin/7za > /tmp/7za
-unzip -p "$ZIPFILE" $NAME/bin/xz > /tmp/xz
 ($UNZIP) || chmod 755 /tmp/7za
-chmod 755 /tmp/xz
-ng fo($UNZIP) && echo_log "Binary used to unpack: unzip (busybox)" || echo_log "Binary used to unpack: 7za"
+($UNZIP) && echo_log "Binary used to unpack: unzip (busybox)" || echo_log "Binary used to unpack: 7za"
 echo_log " "
+
+unzip -p "$ZIPFILE" $NAME/bin/xz > /tmp/xz
+chmod 755 /tmp/xz
 
 # Common partitions/blocks (auto-detection)
 echo_log "Detected common partitions/blocks:"
