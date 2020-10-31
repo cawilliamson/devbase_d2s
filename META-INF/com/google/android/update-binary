@@ -610,7 +610,10 @@ BOOT=$(resolve_link $(find /dev/block/platform -type l -iname boot)) && echo_log
 DATA=$(resolve_link $(find /dev/block/platform -type l -iname userdata)) && echo_log "DATA=$DATA" || ui_print "Failed! DATA block not found..."
 CACHE=$(resolve_link $(find /dev/block/platform -type l -iname cache)) && echo_log "CACHE=$CACHE" || ui_print "Failed! CACHE block not found..."
 if find /dev/block/platform -type l -iname super | grep "."; then
+    SYSTEM=$(resolve_link $(find /dev/block/mapper -type l -iname system)) && echo_log "SYSTEM=$SYSTEM" || ui_print "Failed! SYSTEM block not found..."
+    ODM=$(resolve_link $(find /dev/block/mapper -type l -iname odm)) && echo_log "ODM=$ODM" || ui_print "Failed! ODM block not found..."
     SUPER=$(resolve_link $(find /dev/block/platform -type l -iname super)) && echo_log "SUPER=$SUPER" || ui_print "Failed! SUPER block not found..."
+    VENDOR=$(resolve_link $(find /dev/block/platform -type l -iname vendor)) && echo_log "VENDOR=$VENDOR" || ui_print "Failed! VENDOR block not found..."
 else
     SYSTEM=$(resolve_link $(find /dev/block/platform -type l -iname system)) && echo_log "SYSTEM=$SYSTEM" || ui_print "Failed! SYSTEM block not found..."
     ODM=$(resolve_link $(find /dev/block/platform -type l -iname odm)) && echo_log "ODM=$ODM" # may not exist
@@ -800,7 +803,7 @@ fi
 echo "$ZIPNAME" | grep "^[A-Z][0-9A-Z][0-9A-Z]_" >/dev/null && CSC=$(echo "$ZIPNAME" | cut -c-3)
 if [ "$CSC" != "KCSC" ] ; then
     ui_print "NOTE: CSC has been forced to $CSC..."
-    ui_print " "
+    ugi_print " "
 fi
 
 # Exit if we can't mount /system
