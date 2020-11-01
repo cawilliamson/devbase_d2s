@@ -196,15 +196,31 @@ detect_csc() {
     ERR_CSC=BTU
     local NV_OMC=
     local NV_MPS=
-    local FW_CSC=
+    local FW_CSC=SM_CSC=
     if [ ! -z "$2" ] ; then ERR_CSC=$2 ; fi
     if (! is_mounted /efs) ; then
         mkdir -p /efs
         mount -o ro $EFS /efs || return 3
     fi
-    NV_OMC=$(cat /efs/imei/omcnw_code.dat) && echo_log "detect_csc: omcnw_code: $NV_OMC"
-    NV_MPS=$(cat /efs/imei/mps_code.dat) && echo_log "detect_csc: mps_code: $NV_MPS"
+    if [ ! -z "$OPTICS" ] && (! is_mounted /optics) ; then
+        mkdir -p /optics
+        mount $OPTICS /optics || return 3
+    fi
+    if [ ! -z "$PRISM" ] && (! is_mounted /prism) ; then
+        mkdir -p /prism
+        mount $PRISM /prism || return 3
+    fi
+
+    if [ -d /efs/imei ]; then
+        NV_OMC=$(cat /efs/imei/omcnw_code.dat) && echo_log "detect_csc: omcnw_code: $NV_OMC"
+        NV_MPS=$(cat /efs/imei/mps_code.dat) && echo_log "detect_csc: mps_code: $NV_MPS"
+    else
+        PRISM_CSC=$(cat /prism/etc/sales_code.dat) && echo_log "detect_csc: csc_code: $PRISM_CSC"
+    fi
+    
     umount /efs
+    (is_mounted /prism) && umount /prism
+
     if [ ! -z "$NV_OMC" ] ; then
         if [ ! -z "$(cat $1 | grep "/$NV_OMC/")" ] ; then
             CSC=$NV_OMC
@@ -221,9 +237,18 @@ detect_csc() {
             CSC=$ERR_CSC
             return 1
         fi
+    elif [ ! -z "$PRISM_CSC" ]; then
+        if find /optics/configs/carriers -type d -name "$PRISM_CSC" | grep "."; then
+            CSC=$PRISM_CSC
+        else
+            CSC=$ERR_CSC
+            return 1
+        fi
     else
         return 3
     fi
+
+    (is_mounted /optics) && umount /optics
     echo_log "detect_csc: returned value: $CSC"
 }
 
@@ -243,10 +268,16 @@ detect_cscpath() {
             mkdir -p /efs
             mount -o ro $EFS /efs || return 1
         fi
+        if [ ! -z "$PRISM" ] && (! is_mounted /prism) ; then
+            mkdir -p /prism
+            mount $PRISM /prism || return 3
+        fi
         if [ -f /efs/imei/omcnw_code.dat ] ; then
             NV_CSC=$(cat /efs/imei/omcnw_code.dat)
         elif [ -f /efs/imei/mps_code.dat ] ; then
             NV_CSC=$(cat /efs/imei/mps_code.dat)
+        elif [ -f /prism/etc/sales_code.dat ]; then
+            NV_CSC=$(/prism/etc/sales_code.dat)
         else
             return 1
         fi
@@ -261,6 +292,7 @@ detect_cscpath() {
     else
         return 1
     fi
+    (is_mounted /prism) && umount /prism
     echo_log "detect_cscpath: returned value: $CSCPATH"
 }
 
