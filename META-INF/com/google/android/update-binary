@@ -31,6 +31,13 @@ if [ $? -eq 0 ] ; then
     done
 fi
 
+# determine system mountpoint
+if [ -d /system_root ]; then
+    SYSTEM_MNT=/system_root/system
+else
+    SYSTEM_MNT=/system
+fi
+
 echo_log() {
     # use Windows (CR/LF) text format in log file
     echo -n -e "$1\r\n" >> /tmp/devbase_install.log
@@ -58,7 +65,7 @@ resolve_link() {
 }
 
 get_prop() {
-    local FILE=/system/build.prop
+    local FILE=$SYSTEM_MNT/build.prop
     if [ ! -z "$2" ] ; then FILE=$2 ; fi
     if [ -z "$1" ] || [ ! -f $FILE ] ; then return 1 ; fi
     cat $FILE 2>/dev/null | grep "$1=" >/dev/null || return 1
@@ -66,7 +73,7 @@ get_prop() {
 }
 
 set_prop() {
-    local FILE=/system/build.prop
+    local FILE=$SYSTEM_MNT/build.prop
     if [ ! -z "$3" ] ; then FILE=$3 ; fi
     if [ ! -f $FILE ] ; then return 1 ; fi
     if [ ! -z "$(cat $FILE | grep "^$1=")" ] ; then
@@ -201,16 +208,16 @@ detect_csc() {
     if [ ! -z "$NV_OMC" ] ; then
         if [ ! -z "$(cat $1 | grep "/$NV_OMC/")" ] ; then
             CSC=$NV_OMC
-        elif [ ! -d /system/omc ] && [ ! -d /odm/omc ] && [ ! -d /odm/etc/omc ] ; then
+        elif [ ! -d $SYSTEM_MNT/omc ] && [ ! -d /odm/omc ] && [ ! -d /odm/etc/omc ] ; then
             return 2
         fi
     elif [ ! -z "$NV_MPS" ] ; then
-        FW_CSC=$(cat /system/csc/sales_code.dat)
+        FW_CSC=$(cat $SYSTEM_MNT/csc/sales_code.dat)
         if [ ! -z "$(cat $1 | grep "/$NV_MPS/")" ] ; then
             CSC=$NV_MPS
         elif [ ! -z "$FW_CSC" ] && [ ! -z "$(cat $1 | grep "/$FW_CSC/")" ] ; then
             CSC=$FW_CSC
-        elif [ ! -d /system/csc ] ; then
+        elif [ ! -d $SYSTEM_MNT/csc ] ; then
             CSC=$ERR_CSC
             return 1
         fi
@@ -230,7 +237,7 @@ detect_cscpath() {
             OMC=/odm/omc
         fi
     fi
-    if [ -z "$ODM" ] ; then OMC=/system/omc ; fi
+    if [ -z "$ODM" ] ; then OMC=$SYSTEM_MNT/omc ; fi
     if [ -d $OMC ] ; then
         if (! is_mounted /efs) ; then
             mkdir -p /efs
@@ -249,8 +256,8 @@ detect_cscpath() {
         else
             CSCPATH=$OMC/$(cat $OMC/sales_code_list.dat | grep "$NV_CSC") || return 1
         fi
-    elif [ -d /system/csc ] ; then
-        CSCPATH=/system/csc
+    elif [ -d $SYSTEM_MNT/csc ] ; then
+        CSCPATH=$SYSTEM_MNT/csc
     else
         return 1
     fi
@@ -266,7 +273,7 @@ set_csc() {
     local ODMCON=system_file
     local OMC=/odm/etc/omc
     if [ ! -d $2$OMC ] ; then OMC=/odm/omc ; fi
-    if [ -z "$ODM" ] ; then OMC=/system/omc ; fi
+    if [ -z "$ODM" ] ; then OMC=$SYSTEM_MNT/omc ; fi
     if [ -d /optics ] ; then OMC=/optics/configs/carriers ; fi
     if [ -z "$1" ] ; then return 1 ; fi
     if [ ! -z "$2" ] ; then
@@ -369,12 +376,12 @@ set_csc() {
         echo $1 > $OMC/sales_code.dat
     elif [ -d $2/system/csc ] ; then
         if [ ! -z "$2" ] ; then
-            cp -af $2/system/* /system || return 2
+            cp -af $2/system/* $SYSTEM_MNT || return 2
             rm -Rf $2
         fi
-        cp -af /system/csc/common/system/* /system
-        cp -af /system/csc/$1/system/* /system
-        ln -sf /system/csc/$1/csc_contents /system/csc_contents
+        cp -af $SYSTEM_MNT/csc/common/system/* /system
+        cp -af $SYSTEM_MNT/csc/$1/system/* /system
+        ln -sf $SYSTEM_MNT/csc/$1/csc_contents /system/csc_contents
     else
         return 1
     fi
@@ -386,32 +393,32 @@ kcsc_backup() {
     if [ -d /odm/etc/omc ] || [ -d /odm/omc ] || [ -d /prism ]; then
         # CSC is placed in /odm or /prism partition
         return 0
-    elif [ -d /system/omc ] ; then
+    elif [ -d $SYSTEM_MNT/omc ] ; then
         mkdir -p $1/system
-        cp -Rf /system/omc $1/system
-    elif [ -d /system/csc ] ; then
+        cp -Rf $SYSTEM_MNT/omc $1/system
+    elif [ -d $SYSTEM_MNT/csc ] ; then
         mkdir -p $1/system/etc
         mkdir -p $1/system/priv-app
         mkdir -p $1$SYSLIB
-        cp -Rf /system/csc $1/system
-        cp -Rf /system/T9DB $1/system
-        cp -Rf /system/VODB $1/system
-        cp -Rf /system/HWRDB $1/system
-        cp -Rf /system/sipdb $1/system
-        cp -Rf /system/finder_cp $1/system
-        cp -Rf /system/wallpaper $1/system
-        cp -Rf /system/priv-app/IPsecService $1/system/priv-app
-        cp -f /system/CSCVersion.txt $1/system
-        cp -f /system/SW_Configuration.xml $1/system
-        cp -f /system/etc/csc_*.txt $1/system/etc
-        cp -f /system/etc/enforce*.txt $1/system/etc
-        cp -f /system/etc/hidden_*.txt $1/system/etc
-        cp -f /system/etc/*_keystrings.dat $1/system/etc
-        cp -f /system/etc/lteon_netlist.xml $1/system/etc
-        cp -f /system/etc/plmn_delta.bin $1/system/etc
+        cp -Rf $SYSTEM_MNT/csc $1/system
+        cp -Rf $SYSTEM_MNT/T9DB $1/system
+        cp -Rf $SYSTEM_MNT/VODB $1/system
+        cp -Rf $SYSTEM_MNT/HWRDB $1/system
+        cp -Rf $SYSTEM_MNT/sipdb $1/system
+        cp -Rf $SYSTEM_MNT/finder_cp $1/system
+        cp -Rf $SYSTEM_MNT/wallpaper $1/system
+        cp -Rf $SYSTEM_MNT/priv-app/IPsecService $1/system/priv-app
+        cp -f $SYSTEM_MNT/CSCVersion.txt $1/system
+        cp -f $SYSTEM_MNT/SW_Configuration.xml $1/system
+        cp -f $SYSTEM_MNT/etc/csc_*.txt $1/system/etc
+        cp -f $SYSTEM_MNT/etc/enforce*.txt $1/system/etc
+        cp -f $SYSTEM_MNT/etc/hidden_*.txt $1/system/etc
+        cp -f $SYSTEM_MNT/etc/*_keystrings.dat $1/system/etc
+        cp -f $SYSTEM_MNT/etc/lteon_netlist.xml $1/system/etc
+        cp -f $SYSTEM_MNT/etc/plmn_delta.bin $1/system/etc
         cp -f $SYSLIB/libjni_ipsecservice.so $1$SYSLIB
-        if [ -L /system/csc_contents ] ; then
-            readlink /system/csc_contents > $1/csc_contents
+        if [ -L $SYSTEM_MNT/csc_contents ] ; then
+            readlink $SYSTEM_MNT/csc_contents > $1/csc_contents
         fi
     else
         return 1
@@ -426,9 +433,9 @@ kcsc_restore() {
     chmod -R 644 $1/system
     chmod -R +X $1/system
     chmod 751 $1/system/omc 2>/dev/null
-    cp -af $1/system/* /system
+    cp -af $1/system/* $SYSTEM_MNT
     if [ -f $1/csc_contents ] ; then
-        ln -sf $(cat $1/csc_contents) /system/csc_contents
+        ln -sf $(cat $1/csc_contents) $SYSTEM_MNT/csc_contents
     fi
     rm -Rf $1
     return 0
@@ -488,7 +495,7 @@ virtual_debloat() {
     local OPTFILE=/tmp/options.prop
     if [ ! -z "$1" ] ; then OPTFILE=$1 ; fi
     if [ ! -f $OPTFILE ] ; then return 1 ; fi
-    for DIR in $CSCPATH/etc /system/csc_contents /system/etc ; do
+    for DIR in $CSCPATH/etc $SYSTEM_MNT/csc_contents $SYSTEM_MNT/etc ; do
         if [ -f $DIR/enforceskippingpackages.txt ] ; then
             FILE=$DIR/enforceskippingpackages.txt
             WORKDIR=/tmp/virtual_debloat$DIR
@@ -496,7 +503,7 @@ virtual_debloat() {
         fi
     done
     if [ -z "$FILE" ] ; then
-        FILE=/system/etc/enforceskippingpackages.txt
+        FILE=$SYSTEM_MNT/etc/enforceskippingpackages.txt
         WORKDIR=/tmp/virtual_debloat/system/etc
     else
         FILECON=$(ls -Z $FILE 2>/dev/null | grep "u:object_r" | cut -d: -f3)
@@ -513,7 +520,7 @@ virtual_debloat() {
         done
     fi
     for APK in `cat $OPTFILE | tr '\r' '\n' | sed '/^$/d' | grep -v "^#" | grep "\.apk$"` ; do
-        if [ ! -z "$(find /system/*app -name $APK)" ] ; then
+        if [ ! -z "$(find $SYSTEM_MNT/*app -name $APK)" ] ; then
             cat $WORKDIR/enforceskippingpackages.tmp | grep "$APK" >/dev/null
             if [ $? -ne 0 ] ; then
                 echo "$APK" >> $WORKDIR/enforceskippingpackages.tmp
@@ -522,7 +529,7 @@ virtual_debloat() {
             fi
         fi
     done
-    for CSCAPKFILE in /odm/omc_apks_list.txt /odm/omc/omc_apks_list.txt /odm/etc/omc/omc_apks_list.txt /prism/etc/omc_apks_list.txt /system/omc/common_app/omc_apks_list.txt /system/etc/csc_apks_list.txt /system/etc/csc_user_apks_list.txt ; do
+    for CSCAPKFILE in /odm/omc_apks_list.txt /odm/omc/omc_apks_list.txt /odm/etc/omc/omc_apks_list.txt /prism/etc/omc_apks_list.txt $SYSTEM_MNT/omc/common_app/omc_apks_list.txt $SYSTEM_MNT/etc/csc_apks_list.txt $SYSTEM_MNT/etc/csc_user_apks_list.txt ; do
         if [ -f $CSCAPKFILE ] ; then
             for APK in `cat $CSCAPKFILE | tr '\r' '\n' | sed '/^$/d' | cut -d'/' -f5` ; do
                 echo "$APK" >> $WORKDIR/enforceskippingpackages.tmp
@@ -542,8 +549,8 @@ virtual_debloat() {
 }
 
 rmm_patcher() {
-    cat /system/build.prop /vendor/build.prop 2>/dev/null | grep "vaultkeeper\.feature" >/dev/null || return 1
-    sed -i "s/vaultkeeper\.feature=1/vaultkeeper\.feature=0/g" /system/build.prop
+    cat $SYSTEM_MNT/build.prop /vendor/build.prop 2>/dev/null | grep "vaultkeeper\.feature" >/dev/null || return 1
+    sed -i "s/vaultkeeper\.feature=1/vaultkeeper\.feature=0/g" $SYSTEM_MNT/build.prop
     sed -i "s/vaultkeeper\.feature=1/vaultkeeper\.feature=0/g" /vendor/build.prop 2>/dev/null
     return 0
 }
@@ -630,26 +637,20 @@ fi
 umount $EFS || umount -l $EFS
 umount /efs || umount -l /efs
 umount $SYSTEM || umount -l $SYSTEM
-umount /system || umount -l /system
-umount /system_root || umount -l /system_root
-for MOUNT_POINT in /efs /odm /optics /prism /system /system_root /vendor ; do
+umount $SYSTEM_MNT || umount -l $SYSTEM_MNT
+for MOUNT_POINT in /efs /odm /optics /prism $SYSTEM_MNT /vendor ; do
     if [ -L $MOUNT_POINT ] ; then
         rm -f $MOUNT_POINT
     fi
 done
-mkdir -p /cache /data /efs /system
+mkdir -p /cache /data /efs $SYSTEM_MNT
 if [ ! -z "$ODM" ] ; then mkdir -p /odm ; fi
 if [ ! -z "$OPTICS" ] ; then mkdir -p /optics ; fi
 if [ ! -z "$PRISM" ] ; then mkdir -p /prism ; fi
 if [ ! -z "$VENDOR" ] ; then mkdir -p /vendor ; fi
 
-# Mount current system & detect system_root
-mount -o ro $SYSTEM /system
-if [ -f /system/init.rc ] || [ -f /system/sepolicy ] ; then
-    mkdir -p /system_root
-    mount -o move /system /system_root
-    mount -o bind /system_root/system /system
-fi
+# Mount current system
+mount -o ro $SYSTEM $SYSTEM_MNT
 
 # Mount other necessary partitions
 mount $ODM /odm
@@ -755,7 +756,7 @@ else
     if [ "$XPOSED" = "true" ] ; then
         ui_print "NOTE: Xposed installation has been forced..."
         ui_print " "
-    elif [ "$XPOSED" = "auto" ] && [ -f /system/xposed.prop ] ; then
+    elif [ "$XPOSED" = "auto" ] && [ -f $SYSTEM_MNT/xposed.prop ] ; then
         if (! is_mounted /data) || [ ! -z "$(find /data/app -type d -name de.robv.android.xposed.installer* 2>/dev/null)" ] ; then
             XPOSED=true
             ui_print "NOTE: Xposed profile has been detected..."
@@ -775,9 +776,9 @@ if [ "$CSC" != "KCSC" ] ; then
     ui_print " "
 fi
 
-# Exit if we can't mount /system
-if (! is_mounted /system) ; then
-    ui_print "Failed! Can't mount /system, aborting!"
+# Exit if we can't mount system
+if (! is_mounted $SYSTEM_MNT); then
+    ui_print "Failed! Can't mount $SYSTEM_MNT, aborting!"
     ui_print " "
     abort
 fi
@@ -856,36 +857,28 @@ efs_backup && ui_print "Backing up EFS to $TARGET..." || ui_print "Backing up EF
 if [ ! -z "$SUPER" ]; then
     ui_print "Installing super, please wait..."
     umount /odm
-    umount /system
-    umount /system_root
+    umount $SYSTEM_MNT
     umount /vendor
 
     unzip_flash $NAME/images/super.img $SUPER || ui_print "Failed to flash super.img -> $SUPER"
 
     mount /odm
-    mount /system
-    mount /system_root
+    mount $SYSTEM_MNT
     mount /vendor
 else
     ui_print "Installing system, please wait..."
-    umount /system
-    umount /system_root
-    if (is_mounted /system) ; then
+    umount $SYSTEM_MNT
+    if (is_mounted $SYSTEM_MNT) ; then
         ui_print " "
-        ui_print "Failed! /system is busy, aborting!"
+        ui_print "Failed! $SYSTEM_MNT is busy, aborting!"
         ui_print " "
         abort
     fi
     unzip_flash $NAME/images/system.img $SYSTEM || ui_print "Failed to flash system.img -> $SYSTEM"
-    mount $SYSTEM /system # mount new system & detect system_root
-    if [ -f /system/init.rc ] || [ -f /system/sepolicy ] ; then
-        mkdir -p /system_root
-        mount -o move /system /system_root
-        mount -o bind /system_root/system /system
-    fi
-    if (! is_mounted /system) ; then
+    mount $SYSTEM $SYSTEM_MNT # mount new system
+    if (! is_mounted $SYSTEM_MNT) ; then
         ui_print " "
-        ui_print "Failed! Can't mount new /system, aborting!"
+        ui_print "Failed! Can't mount new $SYSTEM_MNT, aborting!"
         ui_print " "
         abort
     fi
@@ -926,7 +919,7 @@ set_prop wlan.wfd.hdcp disable
 set_prop ro.config.tima 0
 
 # Fix for DRM protected content
-find -L /system -type f -name liboemcrypto.so | while read file ; do mv -f $file $file.bak ; done
+find -L $SYSTEM_MNT -type f -name liboemcrypto.so | while read file ; do mv -f $file $file.bak ; done
 
 ui_print "Applying physical DeBloat..."
 physical_debloat || ui_print "Failed! File not found!"
@@ -956,7 +949,7 @@ else
 fi
 
 # Ignore apps placed in /preload (if exists)
-find /prism/etc/carriers /system/csc /system/etc /system/omc /odm/omc /odm/etc/omc -type f -name hidden_apks_list.txt 2>/dev/null | while read file ; do
+find /prism/etc/carriers $SYSTEM_MNT/csc $SYSTEM_MNT/etc $SYSTEM_MNT/omc /odm/omc /odm/etc/omc -type f -name hidden_apks_list.txt 2>/dev/null | while read file ; do
     if [ -s $file ] ; then
         echo -n "" > $file
     fi
@@ -998,10 +991,10 @@ if [ ! -z "$(find /tmp/$NAME/mods/system -type f 2>/dev/null)" ] ; then
     cd /tmp/$NAME/mods/system
     for apkpath in `find *app -type d -mindepth 1 -maxdepth 1` ; do
         # remove original app's directory, if exists (with odex/oat/etc..)
-        rm -Rf /system/$apkpath 
+        rm -Rf $SYSTEM_MNT/$apkpath 
     done
-    cp -af * /system
-    find * -type f | while read file ; do echo_log "ext_mods: /system/$file replaced/added" ; done
+    cp -af * $SYSTEM_MNT
+    find * -type f | while read file ; do echo_log "ext_mods: $SYSTEM_MNT/$file replaced/added" ; done
     cd /
 fi
 
@@ -1072,8 +1065,7 @@ rm -Rf /data/dalvik-cache/*
 
 umount /odm
 umount /vendor
-umount /system
-umount /system_root
+umount $SYSTEM_MNT
 
 ui_print " "
 ui_print "Installation complete"
